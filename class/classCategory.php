@@ -1,10 +1,12 @@
 <?php
+//include_once('class/db_connect.php'); //tiene que estar en el header
+require_once 'db_connect.php';
 
-class Categoria{
+class sqlCategoria{
 
     var $con;
 
-    function Categoria ($con){
+    function sqlCategoria ($con){
         $this->con = $con;
     }
 
@@ -20,10 +22,6 @@ class Categoria{
 
     function delCateoria($datos){ 
     }
-
-
-
-
 
 }
 
