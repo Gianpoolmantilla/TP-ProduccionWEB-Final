@@ -190,9 +190,8 @@ include_once('class/classCategory.php');
                     <div class="filter-bar d-flex flex-wrap align-items-center">
                         <div class="sorting">
                             <select>
-                                <option value="1">Default sorting</option>
-                                <option value="1">Default sorting</option>
-                                <option value="1">Default sorting</option>
+                                <option value="1">Mayor precio</option>
+                                <option value="1">Menor precio</option>                        
                             </select>
                         </div>
                         <div class="sorting mr-auto">
