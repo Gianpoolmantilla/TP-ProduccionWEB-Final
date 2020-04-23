@@ -26,7 +26,7 @@ require_once('class/classCategory.php');
                                                               $categoria =new sqlCategoria($con); 
                                                               foreach($categoria->getCategorias($row['id_categoria']) as $row2){ ?>
                                                         <li> <a
-                                                                href="shop.php?marca=&amp;categoria=<?php echo $row2['id_categoria']?>"><?php echo $row2['nombre']?></a>
+                                                                href="category.php?categoria=<?php echo $row2['id_categoria']?>"><?php echo $row2['nombre']?></a>
                                                         </li>
                                                         <?php }?>
                                                     </h4>
