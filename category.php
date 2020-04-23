@@ -29,7 +29,12 @@
 <!-- ================ incluyo el menu laterial de categorias ================= -->
                 <?php
                 require_once('left_category.php');
+                if(isset($_GET['categoria'])){
+                    $id_categoria= $_GET['categoria'];
+                }   
+                
                 ?>
+                
 <!-- ================ fin de incluyo el menu laterial de categorias ================= -->
                 <?php
                 require_once('left_marcas.php');

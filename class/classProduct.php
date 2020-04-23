@@ -14,9 +14,8 @@ class sqlProducto{
     }
     
     function getMarca($id){
-        $sql = "SELECT * FROM marca m 
-        INNER JOIN productos p 
-        on m.id_marca = p.".$id;
+        $sql = "SELECT * FROM productos p         
+        WHERE id_marca =".$id;
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 
@@ -27,9 +26,8 @@ class sqlProducto{
     }
     
     function getColorProducto($id){
-        $sql = "SELECT * FROM colores c 
-        INNER JOIN productos p 
-        on c.id_color = p.".$id;
+        $sql = "SELECT * FROM producto p 
+        WHERE id_color =".$id;
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     
