@@ -125,13 +125,8 @@
                     </div>
 
                     <div class="form-group text-center text-md-right mt-3">
-                        <!-- <button type="submit" class="button button--active button-contactForm">Enviar</button> -->
-                <input type="submit" name="enviar" value="enviar">
-                            <!-- <?php
-                            // include('class/classContact.php') ;
-                            ?> -->
-
-
+                         <button type="submit" class="button button--active button-contactForm">Enviar</button> 
+                <!-- <input type="submit" name="enviar" value="enviar">   -->
 
                     </div>
                 </form>

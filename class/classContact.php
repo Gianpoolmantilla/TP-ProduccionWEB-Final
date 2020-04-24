@@ -8,7 +8,7 @@
     $comentario = trim($_POST["comentario"]);
 
 try {
-    
+   // require_once 'mysql-login.php';
     $hostname = 'localhost';
     $database = 'produccion';
     $username = 'root';
