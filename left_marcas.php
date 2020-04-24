@@ -1,21 +1,25 @@
-<div class="sidebar-filter">
+
+                   <?php
+include_once('class/classMarcas.php');
+?>
+
+                   
+                   <div class="sidebar-filter">
                     <div class="top-filter-head">Filtros</div>
                     <div class="common-filter">
                         <div class="head">Marcas</div>
-                        <form action="#">
+                        
                             <ul>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="apple"
-                                        name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="asus"
-                                        name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee"
-                                        name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax"
-                                        name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung"
-                                        name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+                                   <h4 class="panel-title">
+                                   <?php
+                 $marca =new sqlMarca($con); 
+                foreach($marca->getMarcas() as $row){ ?>
+                
+                 <li class="filter-list"><a href="category.php?marca=<?php echo $row['id_marca']?>" ><?php echo $row['descripcion']?><span>(29)</span></a></li><?php }?>
+                                </h4>
                             </ul>
-                        </form>
+                            
+                        
                     </div>
                     <div class="common-filter">
                         <div class="head">Color</div>

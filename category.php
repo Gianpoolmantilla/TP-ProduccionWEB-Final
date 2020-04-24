@@ -29,9 +29,23 @@
 <!-- ================ incluyo el menu laterial de categorias ================= -->
                 <?php
                 require_once('left_category.php');
-                if(isset($_GET['categoria'])){
-                    $id_categoria= $_GET['categoria'];
-                }   
+                include_once('class/classProduct.php');
+                $producto= new sqlProducto($con);
+                $sql = $producto->getProductos();
+                
+                if(!empty($_GET['categoria'])){
+                    $sql.=$producto->getCategoria($_GET['categoria']); 
+                }
+                
+                if(!empty($_GET['marca'])){
+                    $sql.=$producto->getMarca($_GET['marca']); 
+                }
+                
+                if(!empty($_GET['order'])){
+                    $sql.=$producto->getOrderBy($_GET['order']); 
+                }
+                
+                $productosFiltrados = $producto->setFiltros($sql);
                 
                 ?>
                 
