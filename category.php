@@ -34,15 +34,18 @@
                 $sql = $producto->getProductos();
                 
                 if(!empty($_GET['categoria'])){
-                    $sql.=$producto->getCategoria($_GET['categoria']); 
+                    $id_categoria= $_GET['categoria'];
+                    $sql.=$producto->getCategoria($id_categoria); 
                 }
                 
                 if(!empty($_GET['marca'])){
-                    $sql.=$producto->getMarca($_GET['marca']); 
+                    $id_marca=$_GET['marca'];
+                    $sql.=$producto->getMarca($id_marca); 
                 }
                 
                 if(!empty($_GET['order'])){
-                    $sql.=$producto->getOrderBy($_GET['order']); 
+                    $order=$_GET['order'];
+                    $sql.=$producto->getOrderBy($order); 
                 }
                 
                 $productosFiltrados = $producto->setFiltros($sql);

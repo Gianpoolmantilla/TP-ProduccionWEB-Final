@@ -1,6 +1,7 @@
 
                    <?php
 include_once('class/classMarcas.php');
+include_once('category.php');
 ?>
 
                    
@@ -15,10 +16,9 @@ include_once('class/classMarcas.php');
                  $marca =new sqlMarca($con); 
                 foreach($marca->getMarcas() as $row){ ?>
                 
-                 <li class="filter-list"><a href="category.php?marca=<?php echo $row['id_marca']?>" ><?php echo $row['descripcion']?><span>(29)</span></a></li><?php }?>
+                 <li class="filter-list"><a href="category.php?categoria=<?php echo $id_categoria ?>&marca=<?php echo $row['id_marca']?>&order=<? $order?>" ><?php echo $row['descripcion']?><span>(29)</span></a></li><?php }?>
                                 </h4>
                             </ul>
-                            
                         
                     </div>
                     <div class="common-filter">
