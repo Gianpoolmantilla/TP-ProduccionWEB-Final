@@ -27,7 +27,7 @@ try {
 
 $resultado -> execute(array(":nombre"=>$nombre, ":email"=>$email, ":telefono"=>$telefono, ":area"=>$area, ":comentario"=>$comentario ));
 
-echo "registro insertado";
+echo "formulario enviado!";
 $resultado->closeCursor();
 
 } catch (Exception $ex) {

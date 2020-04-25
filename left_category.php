@@ -16,7 +16,7 @@ require_once('class/classCategory.php');
                                         <?php
                                              $categoria =new sqlCategoria($con); 
                                              foreach($categoria->getCategorias() as $row){ ?>
-                                        <ul href="shop.php?marca=&amp;categoria=<?php echo $row['id_categoria']?>">
+                                        <ul>
                                             <?php echo $row['nombre']?>
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
@@ -32,7 +32,7 @@ require_once('class/classCategory.php');
                                                     </h4>
                                                 </div>
                                             </div>
-                                            </lu>
+                                            </ul>
                                             <?php }?>
                                     </h4>
                                 </div>

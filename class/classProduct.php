@@ -9,25 +9,41 @@ class sqlProducto{
     }
 
     function getProductos(){
-        $sql = "SELECT * FROM productos ";
-        return $this->con->query($sql, PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM productos WHERE 1=1";
+        return $sql;
     }
     
     function getMarca($id){
-        $sql = "SELECT * FROM productos p         
-        WHERE id_marca =".$id;
-        return $this->con->query($sql, PDO::FETCH_ASSOC);
+        $sql= " AND id_marca =".$id;
+        return $sql;
     }
 
     function getCategoria($id){
-        $sql = "SELECT * FROM productos p 
-        WHERE id_categoria =".$id;
-        return $this->con->query($sql, PDO::FETCH_ASSOC);
+        $sql = " AND id_categoria =".$id;
+        return $sql;
     }
     
-    function getColorProducto($id){
-        $sql = "SELECT * FROM producto p 
-        WHERE id_color =".$id;
+    
+    function getOrderBy($order){
+        switch($order){
+            case 'D':
+                $sql .= " ORDER BY destacado ASC";
+                break;
+            case 'R':
+                $sql .= " ORDER BY ranking ASC";
+                break;
+            case 'Z':
+                $sql .= " ORDER BY nombre DESC";
+                break;
+            default:
+                $sql .= " ORDER BY nombre ASC";
+        }
+      
+        return $sql;
+    }
+    
+    
+    function setFiltros($sql){
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     
