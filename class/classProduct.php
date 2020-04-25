@@ -17,6 +17,8 @@ class sqlProducto{
         $sql= " AND id_marca =".$id;
         return $sql;
     }
+     
+    
 
     function getCategoria($id){
         $sql = " AND id_categoria =".$id;

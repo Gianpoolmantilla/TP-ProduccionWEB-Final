@@ -74,7 +74,7 @@
                             <option value="1">Show 12</option>
                         </select>
                     </div>
-                    <div>
+                    <div>  
                         <div class="input-group filter-bar-search">
                             <input type="text" placeholder="Search">
                             <div class="input-group-append">
