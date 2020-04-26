@@ -30,19 +30,19 @@
                 <?php
                 require_once('left_category.php');
                 include_once('class/classProduct.php');
-                
+               
                 $producto= new sqlProducto($con);
                 $sql = $producto->getProductos();
                 
                 if(!empty($_GET['categoria'])){
                     $id_categoria= $_GET['categoria'];
                     $sql.=$producto->getCategoria($id_categoria); 
-                }
+                }else{$id_categoria="";}
                 
                 if(!empty($_GET['marca'])){
                     $id_marca=$_GET['marca'];
                     $sql.=$producto->getMarca($id_marca); 
-                }
+                }else{$id_marca="";}
                 
                 if(!empty($_GET['order'])){
                     $order=$_GET['order'];
@@ -50,7 +50,7 @@
                 }
                 
                 $productosFiltrados = $producto->setFiltros($sql);
-                
+               
                 ?>
                 
                 
@@ -71,8 +71,8 @@
                     </div>
                     <div class="sorting mr-auto">
                      <ul>
-                         <li><a href="category.php?order=a">a->z</a></li>
-                         <li><a href="category.php?order=Z">z->a</a></li>
+                         <li><a href="category.php?categoria=<?php echo $id_categoria ?>&marca=<?php echo $id_marca ?>&order=a">a->z</a></li>
+                         <li><a href="category.php?categoria=<?php echo $id_categoria ?>&marca=<?php echo $id_marca ?>&order=Z">z->a</a></li>
                      </ul>
                      
                     </div>

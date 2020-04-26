@@ -25,7 +25,7 @@ include_once('category.php');
                     </div>
                     
                     
-                  <!--  <div class="common-filter">
+       <!--     <div class="common-filter">
                         <div class="head">Color</div>
                         <form action="#">
                             <ul>
