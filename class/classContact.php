@@ -27,8 +27,10 @@ try {
 
 $resultado -> execute(array(":nombre"=>$nombre, ":email"=>$email, ":telefono"=>$telefono, ":area"=>$area, ":comentario"=>$comentario ));
 
-echo "formulario enviado!";
+echo "formulario enviado!<p>&nbsp;</p>";
 $resultado->closeCursor();
+
+echo '<a href="../contact.php" title="Ir la página anterior">Volver</a>';
 
 } catch (Exception $ex) {
    echo "linea del error: " .$ex->getLine() ;
