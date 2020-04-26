@@ -48,13 +48,8 @@ catch (PDOException $e) {
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                             <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">Productos</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-product.php">Product
-                                            Details</a></li>
-                                </ul>
+                                <a href="category.php" class="nav-link">Productos</a>
+                               
                             </li>
                             <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                         </ul>

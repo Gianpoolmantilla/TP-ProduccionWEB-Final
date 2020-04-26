@@ -30,6 +30,7 @@
                 <?php
                 require_once('left_category.php');
                 include_once('class/classProduct.php');
+                
                 $producto= new sqlProducto($con);
                 $sql = $producto->getProductos();
                 
@@ -52,6 +53,7 @@
                 
                 ?>
                 
+                
 <!-- ================ fin de incluyo el menu laterial de categorias ================= -->
                 <?php
                 require_once('left_marcas.php');
@@ -63,16 +65,16 @@
                 <div class="filter-bar d-flex flex-wrap align-items-center">
                     <div class="sorting">
                         <select>
-                            <option value="1">Mayor precio</option>
+                            <option type="submit" value="1">Mayor precio</option>
                             <option value="1">Menor precio</option>
                         </select>
                     </div>
                     <div class="sorting mr-auto">
-                        <select>
-                            <option value="1">Show 12</option>
-                            <option value="1">Show 12</option>
-                            <option value="1">Show 12</option>
-                        </select>
+                     <ul>
+                         <li><a href="category.php?order=a">a->z</a></li>
+                         <li><a href="category.php?order=Z">z->a</a></li>
+                     </ul>
+                     
                     </div>
                     <div>  
                         <div class="input-group filter-bar-search">

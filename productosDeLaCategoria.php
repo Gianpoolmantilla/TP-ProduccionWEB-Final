@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <p><?php echo $row['nombre']?></p>
-                    <h4 class="card-product__title"><a href="#"><?php echo $row['descripcion']?></a></h4>
+                    <h4 class="card-product__title"><a href="single-product.php?id=<?php  echo $row['id_producto']?>"><?php echo $row['descripcion']?></a></h4>
                     <p class="card-product__price">$150.00</p>
                 </div>
             </div>

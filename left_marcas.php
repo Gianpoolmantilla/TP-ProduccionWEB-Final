@@ -23,7 +23,9 @@ include_once('category.php');
                             </ul>
                         
                     </div>
-                    <div class="common-filter">
+                    
+                    
+                  <!--  <div class="common-filter">
                         <div class="head">Color</div>
                         <form action="#">
                             <ul>
@@ -40,7 +42,7 @@ include_once('category.php');
                                 <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey"
                                         name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
                             </ul>
-                        </form>
+                        </form> 
                     </div>
                     <div class="common-filter">
                         <div class="head">Price</div>
@@ -55,5 +57,5 @@ include_once('category.php');
                                 <div id="upper-value"></div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>

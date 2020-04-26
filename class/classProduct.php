@@ -7,6 +7,16 @@ class sqlProducto{
     function sqlProducto($con){
         $this->con = $con;
     }
+    
+    function getProductoDetalle($id){
+        $sql = "SELECT * FROM productos
+        WHERE id_producto=".$id;
+     return $this->con->query($sql, PDO::FETCH_ASSOC);
+    }
+    function getProductosHome(){
+        $sql = "SELECT * FROM productos";
+     return $this->con->query($sql, PDO::FETCH_ASSOC);
+    }
 
     function getProductos(){
         $sql = "SELECT * FROM productos WHERE 1=1";
@@ -29,16 +39,16 @@ class sqlProducto{
     function getOrderBy($order){
         switch($order){
             case 'D':
-                $sql .= " ORDER BY destacado ASC";
+                $sql = " ORDER BY destacado ASC";
                 break;
             case 'R':
-                $sql .= " ORDER BY ranking ASC";
+                $sql = " ORDER BY ranking ASC";
                 break;
             case 'Z':
-                $sql .= " ORDER BY nombre DESC";
+                $sql = " ORDER BY nombre DESC";
                 break;
             default:
-                $sql .= " ORDER BY nombre ASC";
+                $sql = " ORDER BY nombre ASC";
         }
       
         return $sql;

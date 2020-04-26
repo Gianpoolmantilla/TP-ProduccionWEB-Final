@@ -1,6 +1,7 @@
 <?php
   $title = 'home';
   require_once('header.php');
+include_once("class/classProduct.php");
 
 ?>
 
@@ -21,7 +22,10 @@
     </div>
 </section>
 <!-- ================ end banner area ================= -->
-
+      <?php 
+            $id=$_GET['id'];
+             $producto =new sqlProducto($con); 
+                    foreach($producto->getProductoDetalle($id) as $row){ ?>
 
 <!--================Single Product Area =================-->
 <div class="product_image_area">
@@ -30,34 +34,32 @@
             <div class="col-lg-6">
                 <div class="owl-carousel owl-theme s_Product_carousel">
                     <div class="single-prd-item">
+                        <img class="card-img" src="img/product/<?php echo $row['imagen']?>" alt="">
+                    </div>
+                 <!---   <div class="single-prd-item">
                         <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
                     </div>
                     <div class="single-prd-item">
                         <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-                    </div>
-                    <div class="single-prd-item">
-                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-                    </div>
+                    </div>--->
                 </div>
             </div>
+      
+            
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3>Faded SkyBlu Denim Jeans</h3>
+                    <h3><?php echo $row['nombre']?></h3>
                     <h2>$149.99</h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : Household</a></li>
                         <li><a href="#"><span>Availibility</span> : In Stock</a></li>
                     </ul>
-                    <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking
-                        for
-                        something that can make your interior look awesome, and at the same time give you the pleasant
-                        warm feeling
-                        during the winter.</p>
+                    <p><?php echo $row['descripcion'];?></p>
                     <div class="product_count">
                         <label for="qty">Quantity:</label>
-                        <button
+                    <!---    <button
                             onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                            class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
+                            class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--->
                         <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:"
                             class="input-text qty">
                         <!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
@@ -72,7 +74,7 @@
             </div>
         </div>
     </div>
-</div>
+</div><?php }?>
 <!--================End Single Product Area =================-->
 
 <!--================Product Description Area =================-->
