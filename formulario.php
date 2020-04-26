@@ -1,4 +1,4 @@
-<form  class="form-contact contact_form" action="class/classContact.php" method="POST"
+<form  class="form-contact contact_form" method="POST"
                     id="contactForm" novalidate="novalidate">
                      
                          
@@ -22,11 +22,12 @@
                             </div> -->
                             <div class="form-group">                                  
                                   <select id="inputState"  name="area" class="form-control">
-                                  <option selected>Soporte</option>
-                                    <option selected>Garantia</option>
-                                    <option selected>Reclamos</option>
-                                    <option selected>Devolucion del producto</option>
-                                    <option>...</option>
+                                  <option value="">Selecciona un area</option>
+                                  <option value="Soporte">Soporte</option>
+                                    <option value="Garantia">Garantia</option>
+                                    <option value="Reclamos">Reclamos</option>
+                                    <option value="Devolucion del producto">Devolucion del producto</option>
+                                 
                                   </select>
                             </div>
                         </div>
@@ -38,7 +39,10 @@
                         </div>
                     </div>
                     <div class="form-group text-center text-md-right mt-3">
-                         <button type="submit" class="button button--active button-contactForm">Enviar</button>                 
+                         <button type="submit" name="Enviar" class="button button--active button-contactForm">Enviar</button>                 
 
                     </div>
                 </form>
+                <?php
+                include("class/classContact.php");            
+                ?>

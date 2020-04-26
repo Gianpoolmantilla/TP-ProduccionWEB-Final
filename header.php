@@ -26,6 +26,7 @@ catch (PDOException $e) {
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="css/validacionColores.css">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
