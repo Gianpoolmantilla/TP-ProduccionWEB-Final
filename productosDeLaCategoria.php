@@ -29,8 +29,8 @@
                 </div>
                 <div class="card-body">
                     <p><?php echo $row['nombre']?></p>
-                    <h4 class="card-product__title"><a href="single-product.php?id=<?php  echo $row['id_producto'];?>"><?php echo $row['descripcion'];?></a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <h4 class="card-product__title"><a href="single-product.php?id=<?php  echo $row['id_producto'];?>">Ver mas</a></h4>
+                    <p class="card-product__price">$<?php echo $row['precio'];?></p>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
                 </div>
                 <div class="card-body">
                     <p><?php echo $row['nombre']?></p>
-                    <h4 class="card-product__title"><a href="single-product.php?id=<?php  echo $row['id_producto'];?>"><?php echo $row['descripcion'];?></a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <h4 class="card-product__title"><a href="single-product.php?id=<?php  echo $row['id_producto'];?>">Ver mas</a></h4>
+                    <p class="card-product__price">$<?php echo $row['precio'];?></p>
                 </div>
             </div>
         </div>
