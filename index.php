@@ -15,11 +15,11 @@
                 </div>
                 <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
                     <div class="hero-banner__content">
-                        <h4>Shop is fun</h4>
-                        <h1>Browse Our Premium Product</h1>
-                        <p>Us which over of signs divide dominion deep fill bring they're meat beho upon own earth
-                            without morning over third. Their male dry. They are great appear whose land fly grass.</p>
-                        <a class="button button-hero" href="#">Browse Now</a>
+                        <h4>Comprar es divertido</h4>
+                        <h1>EXPLORE NUESTRO PRODUCTO PREMIUM</h1>
+                        <p>¡Estamos entregando! Te llevamos a tu casa eso que no te puede faltar.
+                            Entre todos podemos cuidarnos. #QuedateEnCasa</p>
+                        <a class="button button-hero" href="category.php">Navegar ahora</a>
                     </div>
                 </div>
             </div>
@@ -32,23 +32,23 @@
         <div class="owl-carousel owl-theme hero-carousel">
             <div class="hero-carousel__slide">
                 <img src="img/home/hero-slide1.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <a href="category.php?categoria=9" class="hero-carousel__slideOverlay">
+                    <h3>Celulares Libres</h3>
+                    <p>Hasta 40% OFF</p>
                 </a>
             </div>
             <div class="hero-carousel__slide">
                 <img src="img/home/hero-slide2.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <a href="category.php?categoria=10" class="hero-carousel__slideOverlay">
+                    <h3>Auriculares</h3>
+                    <p>Hasta 20% OFF</p>
                 </a>
             </div>
             <div class="hero-carousel__slide">
                 <img src="img/home/hero-slide3.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <a href="category.php?categoria=8" class="hero-carousel__slideOverlay">
+                    <h3>Smart TV</h3>
+                    <p>Hasta 35% OFF</p>
                 </a>
             </div>
         </div>
@@ -58,9 +58,8 @@
     <!-- ================ trending product section start ================= -->
     <section class="section-margin calc-60px">
         <div class="container">
-            <div class="section-intro pb-60px">
-                <p>Popular Item in the market</p>
-                <h2>Trending <span class="section-intro__style">Product</span></h2>
+            <div class="section-intro pb-60px">                
+                <h2><span class="section-intro__style">Tendencia</span></h2>
             </div>
             <div class="row">     
      <?php
@@ -102,10 +101,10 @@
             <div class="row">
                 <div class="col-xl-5">
                     <div class="offer__content text-center">
-                        <h3>Up To 50% Off</h3>
-                        <h4>Winter Sale</h4>
-                        <p>Him she'd let them sixth saw light</p>
-                        <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
+                        <h3>Hasta el 50% de descuento</h3>
+                        <h4>Rebajas de invierno</h4>
+                        <p>Ofertas Imperdibles!</p>
+                        <a class="button button--active mt-3 mt-xl-4" href="category.php">Compra ahora</a>
                     </div>
                 </div>
             </div>
@@ -116,9 +115,8 @@
     <!-- ================ Best Selling item  carousel ================= -->
     <section class="section-margin calc-60px">
         <div class="container">
-            <div class="section-intro pb-60px">
-                <p>Popular Item in the market</p>
-                <h2>Best <span class="section-intro__style">Sellers</span></h2>
+            <div class="section-intro pb-60px">                
+                <h2><span class="section-intro__style">Los más vendidos</span></h2>
             </div>
             <div class="owl-carousel owl-theme" id="bestSellerCarousel">
                 <div class="card text-center card-product">
@@ -255,31 +253,7 @@
 
 
 
-    <!-- ================ Subscribe section start ================= -->
-    <section class="subscribe-position">
-        <div class="container">
-            <div class="subscribe text-center">
-                <h3 class="subscribe__title">Get Update From Anywhere</h3>
-                <p>Bearing Void gathering light light his eavening unto dont afraid</p>
-                <div id="mc_embed_signup">
-                    <form target="_blank"
-                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                        method="get" class="subscribe-form form-inline mt-5 pt-1">
-                        <div class="form-group ml-sm-auto">
-                            <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
-                            <div class="info"></div>
-                        </div>
-                        <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
-                        <div style="position: absolute; left: -5000px;">
-                            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ================ Subscribe section end ================= -->
+   
 
 </main>
 

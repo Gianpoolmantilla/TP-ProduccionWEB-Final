@@ -49,10 +49,10 @@ catch (PDOException $e) {
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
                             <li class="nav-item submenu dropdown">
-                                <a href="category.php" class="nav-link">Productos</a>
+                                <a href="category.php" class="nav-link">Products</a>
                                
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.php">Contacts</a></li>
                         </ul>
                     </div>
                 </div>
