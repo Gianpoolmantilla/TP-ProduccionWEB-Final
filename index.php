@@ -81,7 +81,7 @@
                         </div>
                         <div class="card-body">
                             <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.php"><?php echo $row['nombre']?></a></h4>
+                            <h4 class="card-product__title"><a href="single-product.php?id=<?php echo $row['id_producto']?>"><?php echo $row['nombre']?></a></h4>
                             <p class="card-product__price">$150.00</p>
                         </div>
                     </div>

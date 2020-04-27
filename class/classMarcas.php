@@ -15,7 +15,7 @@ class sqlMarca{
     }
     function getMarcadeCat($id){
 
-        $sql="SELECT p.id_marca, m.descripcion
+        $sql="select distinct p.id_marca, m.descripcion
         from productos p
         INNER join marcas m on m.id_marca = p.id_marca 
         WHERE p.id_categoria=".$id;

@@ -32,7 +32,12 @@
                 include_once('class/classProduct.php');
                
                 $producto= new sqlProducto($con);
-                $sql = $producto->getProductos();
+                
+                if(empty($_GET['categoria']) && empty($_GET['marca'])){
+                     $productos = $producto->getProductosDefault();
+                    
+                }else{$sql = $producto->getProductos();
+                
                 
                 if(!empty($_GET['categoria'])){
                     $id_categoria= $_GET['categoria'];
@@ -50,7 +55,7 @@
                 }
                 
                 $productosFiltrados = $producto->setFiltros($sql);
-               
+               }
                 ?>
                 
                 

@@ -17,6 +17,11 @@ class sqlProducto{
         $sql = "SELECT * FROM productos LIMIT 8";
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
+    
+     function getProductosDefault(){
+        $sql = "SELECT * FROM productos LIMIT 9";
+     return $this->con->query($sql, PDO::FETCH_ASSOC);
+    }
 
     function getProductos(){
         $sql = "SELECT * FROM productos WHERE 1=1";
@@ -56,6 +61,7 @@ class sqlProducto{
     
     
     function setFiltros($sql){
+
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     
