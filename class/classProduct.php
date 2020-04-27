@@ -14,7 +14,7 @@ class sqlProducto{
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     function getProductosHome(){
-        $sql = "SELECT * FROM productos";
+        $sql = "SELECT * FROM productos LIMIT 8";
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 
