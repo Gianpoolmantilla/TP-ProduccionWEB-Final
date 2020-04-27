@@ -9,8 +9,9 @@ class sqlProducto{
     }
     
     function getProductoDetalle($id){
-        $sql = "SELECT * FROM productos
-        WHERE id_producto=".$id;
+        $sql = "SELECT C.nombre category, P.nombre,p.precio, p.imagen, p.id_producto, p.descripcion  FROM productos P
+        INNER JOIN categorias C ON P.id_categoria = C.id_categoria 
+        WHERE p.id_producto=".$id;
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     function getProductosHome(){

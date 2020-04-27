@@ -51,12 +51,12 @@ include_once("class/classProduct.php");
                     <h3><?php echo $row['nombre']?></h3>
                     <h2>$<?php echo $row['precio'];?></h2>
                     <ul class="list">
-                        <li><a class="active" href="#"><span>Category</span> : Household</a></li>
-                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                        <li><a class="active" href="#"><span>Categoria</span>: <?php echo $row['category']?></a></li>
+                        <li><a href="#"><span>Disponibilidad</span> : En Stock</a></li>
                     </ul>
                     <p><?php echo $row['descripcion'];?></p>
                     <div class="product_count">
-                        <label for="qty">Quantity:</label>
+                        <label for="qty">Cantidad:</label>
                     <!---    <button
                             onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                             class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--->
@@ -64,12 +64,12 @@ include_once("class/classProduct.php");
                             class="input-text qty">
                         <!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button> -->
-                        <a class="button primary-btn" href="#">Add to Cart</a>
+                        <a class="button primary-btn" href="#">Añadir al carrito</a>
                     </div>
-                    <div class="card_area d-flex align-items-center">
+                    <!-- <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -83,19 +83,19 @@ include_once("class/classProduct.php");
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                    aria-selected="true">Description</a>
+                    aria-selected="true">Descripción</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="false">Specification</a>
+                    aria-controls="profile" aria-selected="false">Especificación</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                    aria-controls="contact" aria-selected="false">Comments</a>
+                    aria-controls="contact" aria-selected="false">Comentarios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
-                    aria-controls="review" aria-selected="false">Reviews</a>
+                    aria-controls="review" aria-selected="false">Reseña</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -212,8 +212,8 @@ include_once("class/classProduct.php");
                                     </div>
                                     <div class="media-body">
                                         <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
+                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Respuesta</a>
                                     </div>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -229,8 +229,8 @@ include_once("class/classProduct.php");
                                     </div>
                                     <div class="media-body">
                                         <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
+                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Respuesta</a>
                                     </div>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -246,8 +246,8 @@ include_once("class/classProduct.php");
                                     </div>
                                     <div class="media-body">
                                         <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
+                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Respuesta</a>
                                     </div>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -260,35 +260,35 @@ include_once("class/classProduct.php");
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <h4>Post a comment</h4>
+                            <h4>Publicar un comentario</h4>
                             <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
                                 novalidate="novalidate">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Your Full name">
+                                            placeholder="Nombre completo">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email Address">
+                                            placeholder="Dirección de correro electronico">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="number" name="number"
-                                            placeholder="Phone Number">
+                                            placeholder="Número de teléfono">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <textarea class="form-control" name="message" id="message" rows="1"
-                                            placeholder="Message"></textarea>
+                                            placeholder="Mensaje"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
+                                    <button type="submit" value="submit" class="btn primary-btn">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -310,19 +310,19 @@ include_once("class/classProduct.php");
                                 <div class="rating_list">
                                     <h3>Based on 3 Reviews</h3>
                                     <ul class="list">
-                                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">5 estrellas <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">4 estrellas <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">3 estrellas <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">2 estrellas <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">1 estrellas <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i> 01</a></li>
                                     </ul>
@@ -394,8 +394,8 @@ include_once("class/classProduct.php");
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <h4>Add a Review</h4>
-                            <p>Your Rating:</p>
+                            <h4>Agrega una reseña</h4>
+                            <p>Tu clasificación:</p>
                             <ul class="list">
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -403,26 +403,25 @@ include_once("class/classProduct.php");
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                             </ul>
-                            <p>Outstanding</p>
+                            <p>Excepcional</p>
                             <form action="#/" class="form-contact form-review mt-3">
                                 <div class="form-group">
-                                    <input class="form-control" name="name" type="text" placeholder="Enter your name"
+                                    <input class="form-control" name="name" type="text" placeholder="Introduzca su nombre"
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="email" type="email"
-                                        placeholder="Enter email address" required>
+                                    <input class="form-control" name="Introduzca la dirección de correo electrónico" type="email"
+                                        placeholder="Dirección de correro electronico" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                                    <input class="form-control" name="subject" type="text" placeholder="Ingrese asunto">
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control different-control w-100" name="textarea" id="textarea"
-                                        cols="30" rows="5" placeholder="Enter Message"></textarea>
+                                        cols="30" rows="5" placeholder="Ingrese mensaje.."></textarea>
                                 </div>
                                 <div class="form-group text-center text-md-right mt-3">
-                                    <button type="submit" class="button button--active button-review">Submit
-                                        Now</button>
+                                    <button type="submit" class="button button--active button-review">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -434,121 +433,7 @@ include_once("class/classProduct.php");
 </section>
 <!--================End Product Description Area =================-->
 
-<!--================ Start related Product area =================-->
-<section class="related-product-area section-margin--small mt-0">
-    <div class="container">
-        <div class="section-intro pb-60px">
-            <p>Popular Item in the market</p>
-            <h2>Top <span class="section-intro__style">Product</span></h2>
-        </div>
-        <div class="row mt-30">
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-4.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-5.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-6.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-7.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-8.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-9.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--================ end related Product area =================-->
 
 <?php
 
