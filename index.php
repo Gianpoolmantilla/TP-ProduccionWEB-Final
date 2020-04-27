@@ -31,7 +31,7 @@
     <section class="section-margin mt-0">
         <div class="owl-carousel owl-theme hero-carousel">
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide1.png" alt="" class="img-fluid">
+                <img src="img/home/celularesHome.png" alt="" class="img-fluid">
                 <a href="category.php?categoria=9" class="hero-carousel__slideOverlay">
                     <h3>Celulares Libres</h3>
                     <p>Hasta 40% OFF</p>

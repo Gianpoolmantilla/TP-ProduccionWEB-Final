@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2020 a las 06:42:01
+-- Tiempo de generación: 28-04-2020 a las 01:32:14
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -192,7 +192,8 @@ INSERT INTO `contactos` (`id_contacto`, `nombre`, `email`, `area`, `comentario`,
 (57, 'a', 'a', 'Soporte', 'aa', 'a'),
 (58, 'a', 'a', 'Soporte', 'aa', 'a'),
 (59, 'www', 'ww', 'Reclamos', 'ww', 'ww'),
-(60, '1111111', '11', 'Soporte', '11', 'jnn');
+(60, '1111111', '11', 'Soporte', '11', 'jnn'),
+(61, '545', 'dfdf', 'Soporte', 'fdf', 'sdf');
 
 -- --------------------------------------------------------
 
@@ -246,27 +247,27 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_marca`, `id_categoria`, `precio`) VALUES
-(1, 'iphone 8 plus', 'Mayor rendimiento,Su memoria RAM de 3 GB te permitirá ejecutar varias aplicaciones al mismo tiempo', 'product8.PNG', 2, 12, '35.000'),
-(2, 'Apple iPad Pro 12,9', 'Pantalla Retina Líquida Multi-Touch de 12.9\' Resolución de pantalla de 2732 x 2048 (264 ppi) Coprocesador SoC + M12 de Apple A12X de 64 bits Wi-Fi 5 (802.11ac), BT 5.0', 'nodisponible.PNG', 2, 13, '75.000'),
-(3, 'homepod', 'Este altavoz diseñado a propósito crea un sonido rico y matizado que desafía su tamaño.', 'nodisponible.PNG', 2, 9, '43.000'),
-(4, 'Placa de Video MSI GeForce GTX 1650 4GB GDDR6 ', ' potencia y desempeño para el ray tracing e IA. ¡Una experiencia de juego totalmente novedosa! RTX. It’s On.', 'nodisponible.PNG', 3, 5, '25.000'),
-(5, 'Placa de Video Zotac GeForce RTX 2060 SUPER 8GB ', 'Todo es súper con las nuevas tarjetas gráficas ZOTAC GAMING GeForce RTX 20 Series SUPER. Se basan en la nueva arquitectura NVIDIA Turing, ', 'nodisponible.PNG', 5, 5, '14.350'),
-(6, 'Mother Asrock A320M-HDV R4.03 Ryzen M-ATX ', 'Basada en el chipset AMD AM4, la placa base ASRock A320M-HDV R4.0 está diseñada para soportar procesadores AMD Ryzen.\r\n', 'nodisponible.PNG', 6, 6, '7.500'),
-(7, 'Mother MSI A68HM-E33', ' Soporta socket FM2+/FM2 para procesadores AMD® A-Series/Athlon™ Soporta memoria DDR3 Military Class 4', 'nodisponible.PNG', 3, 6, '5.000'),
-(8, 'Procesador AMD A6 7480 3.5GHz', 'Obtenga un excelente rendimiento con los procesadores acelerados AMD A-Series. La tecnología de CPU multinúcleo y la excelencia de las tecnologías gráficas de alta gama de AMD Radeon se combinan en un único procesador', 'nodisponible.PNG', 8, 7, '8.700'),
-(9, 'Procesador AMD A8 9600 APU 3.4Ghz AM4 ', 'Mejora la productividad de tu computadora de escritorio con la APU A8 9600 ', 'nodisponible.PNG', 8, 7, '9.500'),
-(10, 'Smart TV Samsung 32p LED HD 32J4290', 'Mirá tu contenido preferido con colores naturales que ofrecen detalles tan nítidos como en la realidad. Disfrutá de una experiencia de visualización más colorida.', 'nodisponible.PNG', 1, 8, '15.000'),
-(11, 'Smart TV Hisense 32p LED H3218H5', 'Con el Smart TV Hisense H3218H5, viví una nueva experiencia visual con la resolución HD, que te presentará imágenes con gran detalle y de alta calidad. ', 'nodisponible.PNG', 10, 8, '18.500'),
-(12, 'Sintonizadora De TV Noga Externa Full HD NGS-323', 'Sintonizadora de TV Externa, Mirá Televisión en tu Monitor, Sintonizá cualquier canal de aire y cable. Tecnología Full HD.', 'nodisponible.PNG', 11, 15, '2.500'),
-(13, 'Soporte Para TV Noga Fijo', 'Ofrece movimiento lateral con 2 puntos de articulación y basculación de pantalla en 5° Grados.Incluye kit de fijación para una correcta colocación del equipo', 'nodisponible.PNG', 11, 15, '3.000'),
-(14, 'Parlante Bluetooth Portatil Celular Mini Luces ', 'Potenciá el sonido con este parlante que se convertirá en el mejor aliado en tus momentos de ocio y entretenimiento.\r\n', 'nodisponible.PNG', 11, 9, '4.250'),
-(15, 'Parlante Inalambrico Noga 2.1 Pc', 'SISTEMA DE PARLANTES MULTIMEDIA 2.1', 'nodisponible.PNG', 11, 9, '5.550'),
-(16, 'Auriculares inalámbricos Samsung Buds', 'Especialistas en sonidos de AKG han mejorado la calidad de estos auriculares, ofreciéndote un sonido más enriquecido y con la máxima calidad.', 'nodisponible.PNG', 1, 10, '21.000'),
-(17, 'Auriculares inalámbricos Xiaomi', 'Diseñados teniendo en cuenta la simplicidad, los Redmi AirDots tienen un estilo único. Cuentan con Bluetooth 5.0 que te permite conectarte a distancias largas y tener mejor resistencia a las interfertencias wi-fi para que puedas mantener una conexión', 'nodisponible.PNG', 13, 10, '9.000'),
-(18, 'Home Theater 2.1 Noga', 'SISTEMA DE PARLANTES 2.1 MULTIMEDIA NOGA C/ REMOTO S2176R', 'nodisponible.PNG', 11, 11, '5.400'),
-(19, 'Home Theater Thonet Vander', 'Todo en audio y sonido, lo mejor lo encontrás en Thonet. Comprá online a menor precio! Promo en Productos Seleccionados. Comprobá los precios del Audio Sale de Thonet.', 'nodisponible.PNG', 14, 11, '11.250'),
-(20, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'nodisponible.PNG', 1, 12, '12.500'),
-(21, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'nodisponible.PNG', 1, 12, '15.000');
+(1, 'iphone 8 plus', 'Mayor rendimiento,Su memoria RAM de 3 GB te permitirá ejecutar varias aplicaciones al mismo tiempo', 'iPhone8.PNG', 2, 12, '35.000'),
+(2, 'Apple iPad Pro 12,9', 'Pantalla Retina Líquida Multi-Touch de 12.9\' Resolución de pantalla de 2732 x 2048 (264 ppi) Coprocesador SoC + M12 de Apple A12X de 64 bits Wi-Fi 5 (802.11ac), BT 5.0', 'iPadPro.PNG', 2, 13, '75.000'),
+(3, 'homepod', 'Este altavoz diseñado a propósito crea un sonido rico y matizado que desafía su tamaño.', 'homePod.PNG', 2, 9, '43.000'),
+(4, 'Placa de Video MSI GeForce GTX 1650 4GB GDDR6 ', ' potencia y desempeño para el ray tracing e IA. ¡Una experiencia de juego totalmente novedosa! RTX. It’s On.', 'GeForceGTX.PNG', 3, 5, '25.000'),
+(5, 'Placa de Video Zotac GeForce RTX 2060 SUPER 8GB ', 'Todo es súper con las nuevas tarjetas gráficas ZOTAC GAMING GeForce RTX 20 Series SUPER. Se basan en la nueva arquitectura NVIDIA Turing, ', 'placaGeForceRTX.PNG', 7, 5, '14.350'),
+(6, 'Mother Asrock A320M-HDV R4.03 Ryzen M-ATX ', 'Basada en el chipset AMD AM4, la placa base ASRock A320M-HDV R4.0 está diseñada para soportar procesadores AMD Ryzen.\r\n', 'motherAsRock320.PNG', 6, 6, '7.500'),
+(7, 'Mother MSI A68HM-E33', ' Soporta socket FM2+/FM2 para procesadores AMD® A-Series/Athlon™ Soporta memoria DDR3 Military Class 4', 'motherMSI.PNG', 3, 6, '5.000'),
+(8, 'Procesador AMD A6 7480 3.5GHz', 'Obtenga un excelente rendimiento con los procesadores acelerados AMD A-Series. La tecnología de CPU multinúcleo y la excelencia de las tecnologías gráficas de alta gama de AMD Radeon se combinan en un único procesador', 'Amd_A6.PNG', 8, 7, '8.700'),
+(9, 'Procesador AMD A8 9600 APU 3.4Ghz AM4 ', 'Mejora la productividad de tu computadora de escritorio con la APU A8 9600 ', 'Amd_a8.PNG', 8, 7, '9.500'),
+(10, 'Smart TV Samsung 32p LED HD 32J4290', 'Mirá tu contenido preferido con colores naturales que ofrecen detalles tan nítidos como en la realidad. Disfrutá de una experiencia de visualización más colorida.', 'hiensenTV.PNG', 1, 8, '15.000'),
+(11, 'Smart TV Hisense 32p LED H3218H5', 'Con el Smart TV Hisense H3218H5, viví una nueva experiencia visual con la resolución HD, que te presentará imágenes con gran detalle y de alta calidad. ', 'hisenseTV.PNG', 10, 8, '18.500'),
+(12, 'Sintonizadora De TV Noga Externa Full HD NGS-323', 'Sintonizadora de TV Externa, Mirá Televisión en tu Monitor, Sintonizá cualquier canal de aire y cable. Tecnología Full HD.', 'sintoniNoga.PNG', 11, 15, '2.500'),
+(13, 'Soporte Para TV Noga Fijo', 'Ofrece movimiento lateral con 2 puntos de articulación y basculación de pantalla en 5° Grados.Incluye kit de fijación para una correcta colocación del equipo', 'product4.PNG', 11, 15, '3.000'),
+(14, 'Parlante Bluetooth Portatil Celular Mini Luces ', 'Potenciá el sonido con este parlante que se convertirá en el mejor aliado en tus momentos de ocio y entretenimiento.\r\n', 'NogaLuminoso.PNG', 11, 9, '4.250'),
+(15, 'Parlante Inalambrico Noga 2.1 Pc', 'SISTEMA DE PARLANTES MULTIMEDIA 2.1', 'homeTheareNoga.PNG', 11, 9, '5.550'),
+(16, 'Auriculares inalámbricos Samsung Buds', 'Especialistas en sonidos de AKG han mejorado la calidad de estos auriculares, ofreciéndote un sonido más enriquecido y con la máxima calidad.', 'auriSamsung.PNG', 1, 10, '21.000'),
+(17, 'Auriculares inalámbricos Xiaomi', 'Diseñados teniendo en cuenta la simplicidad, los Redmi AirDots tienen un estilo único. Cuentan con Bluetooth 5.0 que te permite conectarte a distancias largas y tener mejor resistencia a las interfertencias wi-fi para que puedas mantener una conexión', 'auriXioami.PNG', 13, 10, '9.000'),
+(18, 'Home Theater 2.1 Noga', 'SISTEMA DE PARLANTES 2.1 MULTIMEDIA NOGA C/ REMOTO S2176R', 'homeTheareNoga.PNG', 11, 11, '5.400'),
+(19, 'Home Theater Thonet Vander', 'Todo en audio y sonido, lo mejor lo encontrás en Thonet. Comprá online a menor precio! Promo en Productos Seleccionados. Comprobá los precios del Audio Sale de Thonet.', 'HomeThonV.PNG', 14, 11, '11.250'),
+(20, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'SamsungCel.PNG', 1, 12, '12.500'),
+(21, 'Celular Samsung Galaxy A8', 'Celular Samsung Galaxy A8', 'SamsungCel.PNG', 1, 12, '15.000');
 
 --
 -- Índices para tablas volcadas
@@ -330,7 +331,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
