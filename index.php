@@ -32,7 +32,7 @@
         <div class="owl-carousel owl-theme hero-carousel">
             <div class="hero-carousel__slide">
                 <img src="img/home/celularesHome.png" alt="" class="img-fluid">
-                <a href="category.php?categoria=9" class="hero-carousel__slideOverlay">
+                <a href="category.php?categoria=12" class="hero-carousel__slideOverlay">
                     <h3>Celulares Libres</h3>
                     <p>Hasta 40% OFF</p>
                 </a>
