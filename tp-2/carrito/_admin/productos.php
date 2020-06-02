@@ -1,15 +1,14 @@
 <?php 
 require('inc/header.php');
+require('clases/ABMproductos.php');
 ?> 
 
 <div class="container-fluid">
       
       <?php $productsMenu = 'Productos';
 	include('inc/side_bar.php');
-	 
-
+	  $prod = new AMBproductos($con);
         ?>
-	  
 	  
         
         <div class="col-sm-9 col-md-10 main">
@@ -31,43 +30,26 @@ require('inc/header.php');
                 <tr>
                   <th>#</th>
                   <th>Nombre</th>
-                  <th>Fecha</th>
-                  <th>Activa</th> 
+                  <th>descripcion</th>
+                  <!--<th>Activa</th>--> 
 				  <th>Acciones</th>
                 </tr>
               </thead>
 			  <tbody> 
+              <?php  	 
+					foreach($prod->getList() as $producto){?>
               
 						<tr>
-						  <td>1</td>
-						  <td>SSD</td>
-						  <td>26/04/2018</td>
-						  <td>Sí</td> 
+						  <td><?php echo $producto['id_producto'];?></td>
+						  <td><?php echo $producto['nombre'];?></td> 
+						  <td><?php echo $producto['descripcion'];?></td>
 						  <td>
-						      <a href="#"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="#"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="perfiles_ae.php?edit=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
+							  <a href="producto.php?del=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
 					      </td>
 						</tr>
-						<tr>
-						  <td>1</td>
-						  <td>SSD</td>
-						  <td>26/04/2018</td>
-						  <td>Sí</td> 
-						  <td>
-						      <a href="#"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="#"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
-					      </td>
-						</tr>
-						<tr>
-						  <td>1</td>
-						  <td>SSD</td>
-						  <td>26/04/2018</td>
-						  <td>Sí</td> 
-						  <td>
-						      <a href="#"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="#"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
-					      </td>
-						</tr>         
+				    <?php }?>  
+						
               </tbody>
             </table>
           </div>

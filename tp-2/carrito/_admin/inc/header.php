@@ -4,7 +4,7 @@ include('../inc/db_data.php');
 
 include('clases/usuarios.php');
 include('clases/perfil.php');
-
+//include('clases/ABMproductos.php');
 
 try {
         $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);

@@ -1,8 +1,8 @@
 <?
-// datos de conexión
+// datos de conexiï¿½n
 
 $hostname = '127.0.0.1';
-$database = 'carrito';
+$database = 'tp2';
 $username = 'root';
 $password = '';
 $port= 3306
