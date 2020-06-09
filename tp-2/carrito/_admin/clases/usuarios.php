@@ -13,7 +13,7 @@ Class Usuario{
         */
 	public function getList(){
 		$query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo 
-		           FROM usuarios ";
+		           FROM usuarios WHERE activo = 1";
 		$resultado = array();
 		foreach($this->con->query($query) as $key=>$usuario){
 			$resultado[$key] = $usuario;
@@ -140,8 +140,8 @@ Class Usuario{
 	*/
 	
         public function del($id){
-			$sql = "DELETE FROM usuarios WHERE id_usuario = ".$id.';';
-			$sql .= 'DELETE FROM usuarios_perfiles WHERE usuario_id = '.$id;
+			$sql = "UPDATE usuarios SET activo = 0 WHERE id_usuario = ".$id.';';
+			
 
             $this->con->exec($sql);
         }

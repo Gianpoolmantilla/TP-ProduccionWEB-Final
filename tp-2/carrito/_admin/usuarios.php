@@ -18,6 +18,7 @@ require('inc/header.php');
 			
 	include('inc/side_bar.php');
 	 
+	
 	if(isset($_POST['submit'])){ 
 	    if($_POST['id_usuario'] > 0){
                 $user->edit($_POST); 
@@ -55,7 +56,7 @@ require('inc/header.php');
 
           <h2 class="sub-header">Listado 
 		  <?php if(in_array('user.add',$_SESSION['usuario']['permisos'])){?>
-				<a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">A</button></a>
+				<a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
 		  <?php }?>	
 		  </h2>
 		   <?php if(in_array('user.see',$_SESSION['usuario']['permisos'])){?>
