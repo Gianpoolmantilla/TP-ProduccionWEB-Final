@@ -88,14 +88,14 @@ include_once("class/classProduct.php");
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                     aria-controls="profile" aria-selected="false">Especificación</a>
-            </li>
+            </li>           
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                    aria-controls="contact" aria-selected="false">Comentarios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                <a class="nav-link " id="review-tab" data-toggle="tab" href="#review" role="tab"
                     aria-controls="review" aria-selected="false">Reseña</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Comentarios</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -175,7 +175,7 @@ include_once("class/classProduct.php");
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="tab-pane fade " id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="comment_list">
@@ -187,7 +187,7 @@ include_once("class/classProduct.php");
                                     <div class="media-body">
                                         <h4>Blake Ruiz</h4>
                                         <h5>12 feb, 2018 a las 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Respuesta</a>
+                                        <a class="reply_btn" href="#">Responder</a>
                                     </div>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -196,80 +196,51 @@ include_once("class/classProduct.php");
                                     laboris nisi ut aliquip ex ea
                                     commodo</p>
                             </div>
-                            <div class="review_item reply">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-2.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Respuesta</a>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-3.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Respuesta</a>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
+              
+                            
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
                             <h4>Publicar un comentario</h4>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                            <form class="row contact_form" method="POST" id="contactForm"
                                 novalidate="novalidate">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name"
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
                                             placeholder="Nombre completo">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email"
+                                        <input type="email" class="form-control" id="mail" name="mail"
                                             placeholder="Dirección de correro electronico">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="number" name="number"
+                                        <input type="text" class="form-control" id="telefono" name="telefono"
                                             placeholder="Número de teléfono">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1"
+                                        <textarea class="form-control" name="mensaje" id="mensaje" rows="1"
                                             placeholder="Mensaje"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="btn primary-btn">Enviar</button>
+                                    <button type="submit" value="submit" class="btn primary-btn" name="Enviar">Enviar</button>
                                 </div>
-                            </form>
-                        </div>
+                            </form>                          
+                        </div>                        
                     </div>
-                </div>
+                </div><br>
+                <?php
+                              include("class/classComentario.php");            
+                               ?>
             </div>
-            <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+            <div class="tab-pane fade show " id="review" role="tabpanel" aria-labelledby="review-tab">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row total_rate">

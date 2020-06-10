@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2020 a las 01:32:14
+-- Tiempo de generación: 10-06-2020 a las 07:16:51
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -112,6 +112,56 @@ INSERT INTO `colores` (`id_color`, `descripcion`) VALUES
 (3, 'gris'),
 (4, 'rojo'),
 (5, 'azul');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `mail` varchar(100) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `mensaje` varchar(255) DEFAULT NULL,
+  `estado` int(11) DEFAULT NULL,
+  `fechalta` datetime DEFAULT NULL,
+  `id_producto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `nombre`, `mail`, `telefono`, `mensaje`, `estado`, `fechalta`, `id_producto`) VALUES
+(1, 'gg', 'g', 'gg', 'ggg', 100, '2020-06-10 01:40:49', NULL),
+(2, '545', '22', 'jnn', 'dfbfdbb', 100, '2020-06-10 01:44:50', NULL),
+(3, '545', '22', 'jnn', 'dfbfdbb', 100, '2020-06-10 01:46:49', NULL),
+(4, 'qqqqq', 'qqq', 'qqq', 'qq', 100, '2020-06-10 01:48:37', NULL),
+(5, 'qqq33', 'qq33', '333', '33', 100, '2020-06-10 01:51:45', NULL),
+(6, 'qqq33', 'qq33', '333', '33', 100, '2020-06-10 01:52:28', NULL),
+(7, '545', '66', '66', '66', 100, '2020-06-10 01:56:18', NULL),
+(8, '545', '66', '66', '66', 100, '2020-06-10 01:57:08', NULL),
+(9, 'ffs', 'ff', 'ff', 'f', 100, '2020-06-10 01:57:26', NULL),
+(10, '545', 'dd', 'dd', 'dd', 100, '2020-06-10 01:58:00', NULL),
+(11, '545', 'qqq', '111', 'ddd', 100, '2020-06-10 02:07:51', NULL),
+(12, '545', 'qqq', '111', 'ddd', 100, '2020-06-10 02:08:39', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `contact`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `contact` (
+`id_contacto` int(11)
+,`nombre` varchar(100)
+,`email` varchar(50)
+,`area` varchar(100)
+,`comentario` varchar(250)
+,`telefono` varchar(20)
+);
 
 -- --------------------------------------------------------
 
@@ -269,6 +319,15 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_m
 (20, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'SamsungCel.PNG', 1, 12, '12.500'),
 (21, 'Celular Samsung Galaxy A8', 'Celular Samsung Galaxy A8', 'SamsungCel.PNG', 1, 12, '15.000');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `contact`
+--
+DROP TABLE IF EXISTS `contact`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `contact`  AS  select `contactos`.`id_contacto` AS `id_contacto`,`contactos`.`nombre` AS `nombre`,`contactos`.`email` AS `email`,`contactos`.`area` AS `area`,`contactos`.`comentario` AS `comentario`,`contactos`.`telefono` AS `telefono` from `contactos` ;
+
 --
 -- Índices para tablas volcadas
 --
@@ -290,6 +349,12 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `colores`
   ADD PRIMARY KEY (`id_color`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`);
 
 --
 -- Indices de la tabla `contactos`
@@ -326,6 +391,12 @@ ALTER TABLE `alumnos`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
