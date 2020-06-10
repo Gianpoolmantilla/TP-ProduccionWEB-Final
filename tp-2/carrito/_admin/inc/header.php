@@ -37,6 +37,8 @@ if($user->notLogged()){
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/530d20e4e2.js" crossorigin="anonymous"></script>
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->

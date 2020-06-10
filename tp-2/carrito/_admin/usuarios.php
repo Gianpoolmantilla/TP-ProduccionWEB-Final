@@ -52,9 +52,14 @@ require('inc/header.php');
 		  <h1 class="page-header">
             Usuarios
           </h1>
- 
 
-          <h2 class="sub-header">Listado 
+		  <div class="sub-header">
+		      <h4>Nombre</h4>		     
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo isset($usuario->nombre)?$usuario->nombre:'';?>">
+              <br><a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Buscar</button></a>
+		  </div><br>
+
+          <h2 class="sub-header">		 
 		  <?php if(in_array('user.add',$_SESSION['usuario']['permisos'])){?>
 				<a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
 		  <?php }?>	
@@ -88,10 +93,10 @@ require('inc/header.php');
 							  <td><?php echo ($usuario['activo'])?'si':'no';?></td>
 							  <td>
 								  <?php if(in_array('user.edit',$_SESSION['usuario']['permisos'])){?>
-										<a href="usuarios_ae.php?edit=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
+										<a href="usuarios_ae.php?edit=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
 								  <?php }?>
 								   <?php if(in_array('user.del',$_SESSION['usuario']['permisos'])){?>
-										<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+										<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 								<?php }?>
 							  </td>
 							</tr>
