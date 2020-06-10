@@ -1,5 +1,5 @@
 <?php 
-Class AMBproductos{
+Class ABMproductos{
 
     /*conexion a la base*/
 	private $con;	
@@ -8,10 +8,10 @@ Class AMBproductos{
 		$this->con = $con;
 	}
         /**
-        * Obtengo todos los usuarios
+        * Obtengo todos los productos
         */
 	public function getList(){
-		$sql = "SELECT id_producto,nombre,descripcion 
+		$sql = "SELECT id_producto,nombre,descripcion,imagen,precio 
 		           FROM prod ";
        
         $resultado = $this->con->query($sql,PDO::FETCH_ASSOC);       
@@ -21,25 +21,37 @@ Class AMBproductos{
 	}
 	
 	/**
-	* obtengo un usuario
+	* obtengo un producto
 	*/
 	public function get($id){
-	    $query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo,salt
-		           FROM usuarios WHERE id_usuario = ".$id;
+	    $query = "SELECT id_producto,nombre,descripcion
+		           FROM prod WHERE id_producto = ".$id;
         $query = $this->con->query($query); 
 			
-		$usuario = $query->fetch(PDO::FETCH_OBJ);
+		$producto = $query->fetch(PDO::FETCH_OBJ);
 			
-			$sql = 'SELECT perfil_id
-					  FROM usuarios_perfiles  
-					  WHERE usuarios_perfiles.usuario_id = '.$usuario->id_usuario;
-					  
-			foreach($this->con->query($sql) as $perfil){
-				$usuario->perfiles[] = $perfil['perfil_id'];
-			}
+			$sql = 'SELECT m.descripcion
+			FROM marc m
+			inner join prod p
+			on m.id_marca = p.id_marca 
+			WHERE p.id_producto = '.$producto->id_producto;
+			$producto->marca = $this->con->query($sql);
+
+			$sql = '';
+
+			$sql = 'SELECT c.nombre
+			FROM categ c
+			inner join prod p
+			on c.id_categoria = p.id_categoria 
+			WHERE p.id_producto = '.$producto->id_producto;
+
+
+			$producto->categoria = $this->con->query($sql);
+
+			
 			/*echo '<pre>';
 			var_dump($usuario);echo '</pre>'; */
-            return $usuario;
+            return $producto;
 	}
 	
 	
@@ -47,36 +59,18 @@ Class AMBproductos{
 	
 
 	public function edit($data){
-	    $id = $data['id_usuario'];
-	    unset($data['id_usuario']);
+	    $id = $data['id_producto'];
+	    unset($data['id_producto']);
 	    
-            if( $data['clave'] != null){
-				$user = $this->get($id);
-                $data['clave'] = $this->encrypt($data['clave'],$user->salt);
-            }else{
-                unset($data['clave']);
-			}
 			
             foreach($data as $key => $value){
                 if($value != null){
                     $columns[]=$key." = '".$value."'"; 
                 }
             }
-            $sql = "UPDATE usuarios SET ".implode(',',$columns)." WHERE id_usuario = ".$id;
+            $sql = "UPDATE prod SET ".implode(',',$columns)." WHERE id_producto = ".$id;
             
             $this->con->exec($sql);
-			
-			 
-			 
-			$sql = 'DELETE FROM usuarios_perfiles WHERE usuario_id = '.$id;
-			$this->con->exec($sql);
-			
-			$sql = '';
-			foreach($data['perfil'] as $perfil){
-				$sql .= 'INSERT INTO usuarios_perfiles(usuario_id,perfil_id) 
-							VALUES ('.$id.','.$perfil.');';
-			}
-             $this->con->exec($sql);
         
              
 	} 	
@@ -84,15 +78,30 @@ Class AMBproductos{
 	
 	
     public function del($id){
-			$sql = "DELETE FROM usuarios WHERE id_usuario = ".$id.';';
-			$sql .= 'DELETE FROM usuarios_perfiles WHERE usuario_id = '.$id;
+			$sql = "DELETE FROM prod WHERE id_producto = ".$id.';';
+			
 
         $this->con->exec($sql);
     }
 		
 
-	
-
+	public function save($data){
 		
+		foreach($data as $key => $value){
+			
+			if(!is_array($value)){
+				if($value != null){
+					$columns[]=$key;
+					$datos[]=$value;
+				}
+			}
+		}
+		//var_dump($datos);die();
+		$sql = "INSERT INTO prod(".implode(',',$columns).") VALUES('".implode("','",$datos)."')";
+		//echo $sql;die();
+		
+		$this->con->exec($sql);
+
+	}	
 	
 }?>
