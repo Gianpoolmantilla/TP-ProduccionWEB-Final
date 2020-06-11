@@ -13,6 +13,7 @@ if (isset($_POST['Enviar'])) {
       $mail = trim($_POST["mail"]);
       $telefono = trim($_POST["telefono"]);      
       $mensaje = trim($_POST["mensaje"]);
+      $id_producto = trim($_POST["id_producto"]);
 
 
       include_once("db_connect.php");
@@ -23,13 +24,13 @@ if (isset($_POST['Enviar'])) {
       $base ->setAttribute(PDO::ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
       $base -> exec("SET CHARACTER SET utf8");
    
-      $sql = "INSERT INTO comentarios (nombre, mail, telefono, mensaje,fechalta,estado) 
-      VALUES (:nombre, :mail, :telefono, :mensaje, NOW(),100)";
+      $sql = "INSERT INTO comentarios (nombre, mail, telefono, mensaje,fechalta,estado, id_producto) 
+      VALUES (:nombre, :mail, :telefono, :mensaje, NOW(),100, :id_producto)";
    
    
       $resultado=$base->prepare($sql);
    
-   $resultado -> execute(array(":nombre"=>$nombre, ":mail"=>$mail, ":telefono"=>$telefono, ":mensaje"=>$mensaje ));
+   $resultado -> execute(array(":nombre"=>$nombre, ":mail"=>$mail, ":telefono"=>$telefono, ":mensaje"=>$mensaje, ":id_producto"=>$id_producto ));
    $resultado->closeCursor();
 
 

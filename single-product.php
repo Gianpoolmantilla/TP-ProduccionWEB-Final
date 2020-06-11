@@ -229,6 +229,9 @@ include_once("class/classProduct.php");
                                             placeholder="Mensaje"></textarea>
                                     </div>
                                 </div>
+
+                                <input type="hidden" class="form-control" id="id_producto" name="id_producto" placeholder="" value="<?php echo $_GET['id'];?>">
+
                                 <div class="col-md-12 text-right">
                                     <button type="submit" value="submit" class="btn primary-btn" name="Enviar">Enviar</button>
                                 </div>
