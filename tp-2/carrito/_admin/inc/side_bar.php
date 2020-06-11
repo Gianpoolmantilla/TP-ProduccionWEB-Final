@@ -4,9 +4,11 @@
            
             <ul class="nav nav-sidebar">
              
-			 <li>Novedades <ul>			 
+	
+			 <li>Novedades<ul>			 
 			 <li><a href="index.php">Home</a></li>
 			  <li class="<?php echo isset($newsMenu)?'active':''?>"><a href="noticias.php">Tareas</a></li>
+			  <li class="<?php echo isset($comentariosMenu)?'active':''?>"><a href="comentarios.php">Comentarios</a></li>
 			 </ul></li>
 			  
 			  <li>Tablas y parametros<ul>			  

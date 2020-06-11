@@ -2,7 +2,7 @@
   $title = 'home';
   require_once('header.php');
 include_once("class/classProduct.php");
-
+include_once("class/classquerycomentario.php");
 ?>
 
 <!-- ================ start banner area ================= -->
@@ -36,12 +36,7 @@ include_once("class/classProduct.php");
                     <div class="single-prd-item">
                         <img class="card-img" src="img/product/<?php echo $row['imagen']?>" alt="">
                     </div>
-                 <!---   <div class="single-prd-item">
-                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-                    </div>
-                    <div class="single-prd-item">
-                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-                    </div>--->
+            
                 </div>
             </div>
       
@@ -57,19 +52,13 @@ include_once("class/classProduct.php");
                     <p><?php echo $row['descripcion'];?></p>
                     <div class="product_count">
                         <label for="qty">Cantidad:</label>
-                    <!---    <button
-                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                            class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--->
+                 
                         <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:"
                             class="input-text qty">
-                        <!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-               class="reduced items-count" type="button"><i class="ti-angle-right"></i></button> -->
+            
                         <a class="button primary-btn" href="#">Añadir al carrito</a>
                     </div>
-                    <!-- <div class="card_area d-flex align-items-center">
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                    </div> -->
+         
                 </div>
             </div>
         </div>
@@ -179,24 +168,25 @@ include_once("class/classProduct.php");
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="comment_list">
+                            
+
+                        <?php 
+            $id=$_GET['id'];
+             $comentario =new sqlcomentario($con); 
+                    foreach($comentario->getComentarioDelProducto($id) as $row){ ?>
+
                             <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-1.png" alt="">
-                                    </div>
+                                <div class="media">                                   
                                     <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12 feb, 2018 a las 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Responder</a>
+                                        <h4><?php echo $row['nombre']?></h4>
+                                        <h5><?php echo $row['fechalta']?></h5>
+                                        
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
+                                <p><?php echo $row['mensaje']?></p>
                             </div>
-              
+                          <?php }?>
+           
                             
                         </div>
                     </div>
