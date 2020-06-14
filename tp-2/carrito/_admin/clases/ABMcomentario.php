@@ -12,7 +12,7 @@ Class ABMcomentario{
         */
 	public function getList(){
 		$sql = "SELECT id_comentario,nombre,mensaje,mail,fechalta 
-		           FROM coment ";
+		           FROM coment WHERE estado = 100 ";
        
         $resultado = $this->con->query($sql,PDO::FETCH_ASSOC);       
        // $resultado = $query->fetch(PDO::FETCH_OBJ);	

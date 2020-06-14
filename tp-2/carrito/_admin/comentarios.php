@@ -31,7 +31,27 @@ require('inc/header.php');
 	}
 
         ?>
-	  
+
+<script type = "text/javascript">
+  function ConfirmAprobacion()
+  {
+    var respuesta =confirm("¿Estas seguro que desea Aprobar?");
+    if(respuesta == true){
+        return true;
+    }else{
+        return false;
+    }
+  }
+  function ConfirmDelete()
+  {
+    var respuesta =confirm("¿Estas seguro que desea eliminar?");
+    if(respuesta == true){
+        return true;
+    }else{
+        return false;
+    }
+  }
+</script>	  
         
         <div class="col-sm-9 col-md-10 main">
           
@@ -67,8 +87,8 @@ require('inc/header.php');
               <td><?php echo $comentarios['mail'];?></td>
               <td><?php echo $comentarios['fechalta'];?></td>
 						  <td>
-						      <a href="comentarios.php?update=<?php echo $comentarios['id_comentario']?>"><button type="button" class="btn btn-success" title="Aprobacion"><i class="far fa-check-circle"></i></button></a>
-							    <a href="comentarios.php?del=<?php echo $comentarios['id_comentario']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
+						      <a href="comentarios.php?update=<?php echo $comentarios['id_comentario']?>"><button type="button" class="btn btn-success" title="Aprobacion" onclick= "return ConfirmAprobacion()"><i class="far fa-check-circle"></i></button></a>
+							    <a href="comentarios.php?del=<?php echo $comentarios['id_comentario']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					    </td>
 						</tr>
 				    <?php }?>  
