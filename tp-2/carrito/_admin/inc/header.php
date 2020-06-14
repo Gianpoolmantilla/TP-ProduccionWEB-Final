@@ -7,6 +7,15 @@ include('clases/perfil.php');
 include('clases/ABMproductos.php');
 include('clases/ABMcomentario.php');
 
+
+
+$hostname = '127.0.0.1';
+$database = 'tp2';
+$username = 'root';
+$password = '';
+$port= 3306;
+
+
 try {
         $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
 } catch (PDOException $e) {
