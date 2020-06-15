@@ -6,6 +6,8 @@ include('clases/usuarios.php');
 include('clases/perfil.php');
 include('clases/ABMproductos.php');
 include('clases/ABMcomentario.php');
+include('clases/AbmMarcas.php');
+include('clases/AbmCategorias.php');
 
 
 

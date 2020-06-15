@@ -14,8 +14,8 @@
 			  <li>Tablas y parametros<ul>			  
 			  <li class="<?php echo isset($productsMenu)?'active':''?>"><a href="productos.php">Productos</a></li>
 			  <li class="<?php echo isset($promoMenu)?'active':''?>"><a href="promociones.php">Tipo de productos</a></li> 
-			  <li class="<?php echo isset($promoMenu)?'active':''?>"><a href="promociones.php">Marcas</a></li> 
-			  <li class="<?php echo isset($promoMenu)?'active':''?>"><a href="promociones.php">Categorias</a></li> 
+			  <li class="<?php echo isset($marcasMenu)?'active':''?>"><a href="marcas.php">Marcas</a></li> 
+			  <li class="<?php echo isset($categoriasMenu)?'active':''?>"><a href="categorias.php">Categorias</a></li> 
 			  <li class="<?php echo isset($promoMenu)?'active':''?>"><a href="promociones.php">Clientes</a></li> 
 			  <li class="<?php echo isset($promoMenu)?'active':''?>"><a href="promociones.php">Lista de precio</a></li> 
 			  </ul></li>

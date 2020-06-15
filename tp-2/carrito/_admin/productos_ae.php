@@ -18,7 +18,9 @@ require('inc/header.php');
 				header('Location: index.php');
 			}
 	*/
-	$prod = new ABMproductos($con); 
+    $prod = new ABMproductos($con); 
+    $marcas = new Marca($con); 
+    $categorias = new Categoria ($con);
 	
 	if(isset($_GET['edit'])){
             $producto = $prod->get($_GET['edit']); 
@@ -70,18 +72,52 @@ require('inc/header.php');
                         <input type="text" class="form-control" id="imagen" name="imagen" placeholder="" value="<?php echo isset($producto->imagen)?$producto->imagen:'';?>" required>
                     </div>
                 </div>
+            
                 <div class="form-group">
                     <label for="id_marca" class="col-sm-2 control-label">Marca</label>
-                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="marca" name="id_marca" placeholder="" value="<?php echo isset($producto->id_marca)?$producto->id_marca:'';?>" required>
-                    </div>
+                    
+                     <select name="id_marca" id="marca" >
+                            <?php  foreach($marcas-> getList() as $l){?>
+                            <div class="col-sm-10">
+                                <option value="<?php echo $l['id_marca']?>"
+                                <?php 
+								if(isset($producto->marca)){
+									if($l['descripcion'] == $producto->marca){
+											echo ' selected="selected" ';
+									}
+								}?> required><?php echo $l['descripcion']?>
+                                  
+                                </option>
+                            </div>     
+                            <?php }?>    
+                      <!--  <input type="number" class="form-control" id="marca" name="id_marca" placeholder="" value="<?php // echo isset($producto->id_marca)?$producto->id_marca:'';?>" required> -->
+                        </select>
+                    
                 </div> 
+
                 <div class="form-group">
                     <label for="id_categoria" class="col-sm-2 control-label">Categoria</label>
-                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="categoria" name="id_categoria" placeholder="" value="<?php echo isset($producto->id_categoria)?$producto->id_categoria:'';?>" required>
-                    </div>
+                    
+                        <select name="id_categoria" id="categoria" >
+                            <?php  foreach($categorias-> getListSubCategoria() as $c){?>
+                            <div class="col-sm-10">
+                                <option value="<?php echo $c['id_categoria']?>"
+                                <?php 
+								if(isset($producto->categoria)){
+									if($c['nombre'] == $producto->categoria){
+											echo ' selected="selected" ';
+									}
+								}?> required><?php echo $c['nombre']?>
+
+                                </option>
+                            </div>    
+                            <?php }?>
+                    <!--    <input type="number" class="form-control" id="categoria" name="id_categoria" placeholder="" value="<?php //echo isset($producto->id_categoria)?$producto->id_categoria:'';?>" required> -->
+                        </select>
+                    
                 </div>
+
+            
         
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

@@ -22,7 +22,8 @@ require('inc/header.php');
 	}	
 	 
 	if(isset($_GET['del'])){
-    $user->del($_GET['del']);
+    
+    $prod->del($_GET['del']);
     header('Location: productos.php');
 
 	}

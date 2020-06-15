@@ -24,7 +24,7 @@ Class ABMproductos{
 	* obtengo un producto
 	*/
 	public function get($id){
-	    $query = "SELECT id_producto,nombre,descripcion
+	    $query = "SELECT id_producto,nombre,descripcion,imagen,precio
 		           FROM prod WHERE id_producto = ".$id;
         $query = $this->con->query($query); 
 			
@@ -34,19 +34,25 @@ Class ABMproductos{
 			FROM marc m
 			inner join prod p
 			on m.id_marca = p.id_marca 
-			WHERE p.id_producto = '.$producto->id_producto;
-			$producto->marca = $this->con->query($sql);
-
+			WHERE p.id_producto = '.$id;
+			foreach($this->con->query($sql) as $m){
+				$producto->marca = $m['descripcion'];
+			}
+			
+			
+			//echo $producto->marca; die();
 			$sql = '';
 
 			$sql = 'SELECT c.nombre
 			FROM categ c
 			inner join prod p
 			on c.id_categoria = p.id_categoria 
-			WHERE p.id_producto = '.$producto->id_producto;
+			WHERE p.id_producto = '.$id;
 
-
-			$producto->categoria = $this->con->query($sql);
+			foreach($this->con->query($sql) as $c){
+				$producto->categoria = $c['nombre'];
+				}
+			
 
 			
 			/*echo '<pre>';
