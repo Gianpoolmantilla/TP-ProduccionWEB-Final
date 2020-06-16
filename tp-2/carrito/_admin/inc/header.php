@@ -52,11 +52,7 @@ if($user->notLogged()){
     <script src="https://kit.fontawesome.com/530d20e4e2.js" crossorigin="anonymous"></script>
 
 
-<!-- agregado de footer -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/scripts.js"></script>
-<!-- fin  del agregado -->
+
 
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -77,8 +73,7 @@ if($user->notLogged()){
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>  
+            <li><a href="?logout"><i class="fas fa-power-off"></i> Cerrar sesion</a></li>  
           </ul>          
         </div>
       </div>
