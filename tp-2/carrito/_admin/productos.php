@@ -43,7 +43,7 @@ require('inc/header.php');
           </h1>
  
 
-          <h2 class="sub-header">Listado <a href="productos_ae.php"><button type="button" class="btn btn-success" title="Agregar">A</button></a></h2>
+          <h2 class="sub-header"><a href="productos_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a></h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -67,8 +67,8 @@ require('inc/header.php');
               <td><?php echo $producto['imagen'];?></td>
               <td><?php echo $producto['precio'];?></td>
 						  <td>
-						      <a href="productos_ae.php?edit=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							    <a href="productos.php?del=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="productos_ae.php?edit=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							    <a href="productos.php?del=<?php echo $producto['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 					    </td>
 						</tr>
 				    <?php }?>  

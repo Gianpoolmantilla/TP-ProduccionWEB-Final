@@ -44,8 +44,8 @@ require('inc/header.php');
 						  <td>26/04/2018</td>
 						  <td>Sí</td> 
 						  <td>
-						      <a href="#"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="#"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="#"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="#"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 						<tr>

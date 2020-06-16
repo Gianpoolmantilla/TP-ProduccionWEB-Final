@@ -48,7 +48,7 @@ require('inc/header.php');
           </h1>
  
 
-          <h2 class="sub-header">Listado <a href="marcas_ae.php"><button type="button" class="btn btn-success" title="Agregar">A</button></a></h2>
+          <h2 class="sub-header"><a href="marcas_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a></h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -66,8 +66,8 @@ require('inc/header.php');
 						  <td><?php echo $marca['id_marca'];?></td>
 						  <td><?php echo $marca['descripcion'];?></td> 
 						  <td>
-						      <a href="marcas_ae.php?edit=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="marcas_ae.php?edit=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                

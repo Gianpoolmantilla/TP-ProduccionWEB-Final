@@ -51,6 +51,13 @@ if($user->notLogged()){
 		<link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/530d20e4e2.js" crossorigin="anonymous"></script>
 
+
+<!-- agregado de footer -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+<!-- fin  del agregado -->
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->

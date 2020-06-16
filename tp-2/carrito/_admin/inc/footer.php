@@ -1,5 +1,5 @@
 <footer>
-  <p class="pull-right">©2014 Company</p>
+  <!-- <p class="pull-right">ï¿½2014 Company</p> -->
 </footer>
         
 	<!-- script references -->

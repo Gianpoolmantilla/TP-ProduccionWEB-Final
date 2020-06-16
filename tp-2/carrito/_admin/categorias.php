@@ -61,8 +61,8 @@ require('inc/header.php');
           </h1>
  
 
-          <h2 class="sub-header">Listado </h2>
-          <h2 class="sub-header">Categorias</h2><a href="categorias_ae.php?id_padre=0"><button type="button" class="btn btn-success" title="Agregar">A</button></a>
+          <h2 class="sub-header"></h2>
+          <h2 class="sub-header">Categorias</h2><a href="categorias_ae.php?id_padre=0"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -80,8 +80,8 @@ require('inc/header.php');
 						  <td><?php echo $categoria['id_categoria'];?></td>
 						  <td><?php echo $categoria['nombre'];?></td> 
 						  <td>
-						      <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                
@@ -92,7 +92,7 @@ require('inc/header.php');
 
            
           
-          <h2 class="sub-header"> Sub-Categorias</h2><a href="subCategorias_ae.php"><button type="button" class="btn btn-success" title="Agregar">A</button></a>
+          <h2 class="sub-header"> Sub-Categorias</h2><a href="subCategorias_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -110,8 +110,8 @@ require('inc/header.php');
 						  <td><?php echo $subCategoria['id_categoria'];?></td>
 						  <td><?php echo $subCategoria['nombre'];?></td> 
 						  <td>
-						      <a href="subCategorias_ae.php?edit=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="categorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="subCategorias_ae.php?edit=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="categorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                
