@@ -36,7 +36,12 @@ require('inc/header.php');
             header('Location: usuarios.php');
 
 	}
+
+	if(isset($_POST['buscar'])){
 	
+		$xnombre= $_POST['xnombre'];
+		$user->getList($xnombre);
+	}
 
         ?>
 	  
@@ -56,8 +61,8 @@ require('inc/header.php');
 		
 		  <form method="POST">
 		      <h4>Nombre</h4>		     
-              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="">
-              <br><a href="usuarios.php"><button type="button" class="btn btn-success" title="Agregar">Buscar</button></a>
+              <input type="text" class="form-control" id="xnombre" name="xnombre" placeholder="" value="">
+              <br><button type="submit" class="btn btn-success" title="buscar" name="buscar">Buscar</button>
 			  </form>
 		
 
@@ -83,7 +88,7 @@ require('inc/header.php');
 				  </thead>
 				  <tbody>
 					<?php  	 
-						foreach($user->getList() as $usuario){?>
+						foreach($user->getList($xnombre) as $usuario){?>
 				  
 							<tr>
 							  <td><?php echo $usuario['id_usuario'];?></td>

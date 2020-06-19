@@ -11,9 +11,9 @@ Class Usuario{
         /**
         * Obtengo todos los usuarios
         */
-	public function getList(){
+	public function getList($Xnombre){
 		$query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo 
-		           FROM usuarios WHERE activo = 1";
+		           FROM usuarios WHERE activo = 1 AND nombre like '%".$Xnombre."%'";
 		$resultado = array();
 		foreach($this->con->query($query) as $key=>$usuario){
 			$resultado[$key] = $usuario;
@@ -57,9 +57,9 @@ Class Usuario{
 	/**
 	* obtengo un usuario en campo filtro
 	*/
-	public function getfiltro($nombre){
+	public function getfiltro($xnombre){
 	    $query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo,salt
-		           FROM usuarios WHERE nombre like '%".$nombre."%'";
+		           FROM usuarios WHERE nombre like '%".$Xnombre."%'";
         $query = $this->con->query($query); 
 			
 		$usuario = $query->fetch(PDO::FETCH_OBJ);
