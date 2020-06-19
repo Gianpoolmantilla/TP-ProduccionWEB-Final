@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2020 a las 07:39:10
+-- Tiempo de generación: 19-06-2020 a las 03:12:15
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tp2`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_mc` VARCHAR(100))  SELECT p.id_producto id_producto, p.nombre nombre, p.descripcion descripcion,c.nombre descategoria ,m.descripcion descmarca, p.precio precio
+FROM prod p 
+INNER JOIN categ c ON c.id_categoria = p.id_categoria 
+INNER JOIN marc m on m.id_marca = p.id_marca 
+WHERE 
+c.nombre =(CASE WHEN _cat = '' THEN c.nombre else _cat END )
+AND
+m.descripcion = (CASE WHEN _mc = '' THEN m.descripcion else _mc END )
+AND
+p.nombre LIKE CONCAT('%', _nom , '%')$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
