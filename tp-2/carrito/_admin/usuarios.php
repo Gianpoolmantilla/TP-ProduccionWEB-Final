@@ -53,11 +53,13 @@ require('inc/header.php');
             Usuarios
           </h1>
 
-		  <div class="sub-header">
+		
+		  <form method="POST">
 		      <h4>Nombre</h4>		     
-              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo isset($usuario->nombre)?$usuario->nombre:'';?>">
-              <br><a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Buscar</button></a>
-		  </div><br>
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="">
+              <br><a href="usuarios.php"><button type="button" class="btn btn-success" title="Agregar">Buscar</button></a>
+			  </form>
+		
 
           <h2 class="sub-header">		 
 		  <?php if(in_array('user.add',$_SESSION['usuario']['permisos'])){?>

@@ -21,6 +21,21 @@ Class ABMproductos{
 	}
 	
 	/**
+	* executo un store procedure para los filtros
+	*/
+
+	public function filtrosProductos($xnombre,$xcategoria,$marca){
+		$sql = " CALL Busquedaproductofiltros ('".$xnombre."','".$xcategoria."','".$marca."') ";
+       
+        $resultado = $this->con->query($sql,PDO::FETCH_ASSOC);       
+       // $resultado = $query->fetch(PDO::FETCH_OBJ);	
+	
+            return $resultado; 
+	}
+	
+
+
+	/**
 	* obtengo un producto
 	*/
 	public function get($id){

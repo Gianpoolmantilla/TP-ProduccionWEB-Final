@@ -53,6 +53,22 @@ Class Usuario{
 			var_dump($usuario);echo '</pre>'; */
             return $usuario;
 	}
+
+	/**
+	* obtengo un usuario en campo filtro
+	*/
+	public function getfiltro($nombre){
+	    $query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo,salt
+		           FROM usuarios WHERE nombre like '%".$nombre."%'";
+        $query = $this->con->query($query); 
+			
+		$usuario = $query->fetch(PDO::FETCH_OBJ);
+			
+			
+			/*echo '<pre>';
+			var_dump($usuario);echo '</pre>'; */
+            return $usuario;
+	}
 	
 	
 	/**
