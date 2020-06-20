@@ -54,7 +54,7 @@ if(isset($_POST['buscar'])){
   $xmarcas= ""; 
   $xcategorias = "";
   $xsubcategoria ="";                               
-  $prod->filtrosProductos($xnombre,$xmarcas,$xcategoria,$xsubcategoria);
+  $prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
 }
 /////////////////////////////////////////////////////////////
 
@@ -153,8 +153,7 @@ if(isset($_POST['buscar'])){
                 </tr>
               </thead>
 			  <tbody> 
-              <?php               
-                            
+              <?php        
                                                
              
 					foreach($prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria) as $producto2){ ?>
