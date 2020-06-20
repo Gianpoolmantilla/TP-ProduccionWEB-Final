@@ -42,16 +42,19 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
 // ///////////////////boton buscar ///////////////////////////////
 if(isset($_POST['buscar'])){  
 
-  $xnombre = $_POST['xnombre'];
-  $xcategorias = $_POST['xcategorias'];
+  $xnombre = $_POST['xnombre']; 
   $xmarcas= $_POST['xmarcas']; 
-  $prod->filtrosProductos($xnombre,$xcategorias,$xmarcas);
+  $xcategorias = $_POST['xcategorias'];
+  $xsubcategoria = $_POST['xsubcategorias'];
+
+  $prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
   
 }	else{
-  $xnombre = "";
+  $xnombre = ""; 
+  $xmarcas= ""; 
   $xcategorias = "";
-  $xmarcas= "";                                
-  $prod->filtrosProductos($xnombre,$xcategorias,$xmarcas);
+  $xsubcategoria ="";                               
+  $prod->filtrosProductos($xnombre,$xmarcas,$xcategoria,$xsubcategoria);
 }
 /////////////////////////////////////////////////////////////
 
@@ -74,13 +77,31 @@ if(isset($_POST['buscar'])){
 		      <h4>Nombre</h4>		     
               <input type="text" class="form-control" id="xnombre" name="xnombre" placeholder="" value=""><br>
               </div> 
+            
               <div class="form-group col-md-6">
+              <h4>Marcas</h4>	
+              <select name="xmarcas" id="xmarcas" class="form-control ">
+              <option value="">Seleccionar...</option>
+              <?php  foreach($marcas-> getList() as $l){?>
+                
+                                <option value="<?php echo $l['id_marca']?>"
+                                <?php 
+								if(isset($producto->marca)){
+									if($l['descripcion'] == $producto->marca){
+											echo ' selected="selected" ';
+									}
+								}?> required><?php echo $l['descripcion']?>
+                                </option>
+                            <?php }?>  
+              </select>
+              </div>
+              <div class="form-group col-md-3">
               <h4>Categoria</h4>	
               <select name="xcategorias" id="xcategorias" class="form-control ">
               <option value="">Seleccionar...</option>
-              <?php  foreach($categorias-> getListSubCategoria() as $c){?>
+              <?php  foreach($categorias-> getListCategoria() as $c){?>
                                
-                                <option value="<?php echo $c['nombre']?>"
+                                <option value="<?php echo $c['id_categoria']?>"
                                 <?php 
 								if(isset($producto->categoria)){
 									if($c['nombre'] == $producto->categoria){
@@ -91,23 +112,24 @@ if(isset($_POST['buscar'])){
                             <?php }?>
               </select>
               </div>
-              <div class="form-group col-md-6">
-              <h4>Marcas</h4>	
-              <select name="xmarcas" id="xmarcas" class="form-control ">
+              <div class="form-group col-md-3">
+              <h4>Sub Categoria</h4>	
+              <select name="xsubcategorias" id="xsubcategorias" class="form-control ">
               <option value="">Seleccionar...</option>
-              <?php  foreach($marcas-> getList() as $l){?>
-                
-                                <option value="<?php echo $l['descripcion']?>"
+              <?php  foreach($categorias-> getListSubCategoria() as $sc){?>
+                               
+                                <option value="<?php echo $sc['id_categoria']?>"
                                 <?php 
-								if(isset($producto->marca)){
-									if($l['descripcion'] == $producto->marca){
+								if(isset($producto->categoria)){
+									if($sc['nombre'] == $producto->categoria){
 											echo ' selected="selected" ';
 									}
-								}?> required><?php echo $l['descripcion']?>
+								}?> required><?php echo $sc['nombre']?>
                                 </option>
-                            <?php }?>  
+                            <?php }?>
               </select>
-              </div><br>
+              </div>
+              <br>
               <div class="form-group">
               <br>
               <button type="submit" class="btn btn-success" name="buscar">Buscar</button>
@@ -122,10 +144,11 @@ if(isset($_POST['buscar'])){
                 <tr>
                   <th>#</th>
                   <th>Nombre</th>
-                  <th>descripcion</th>
-                  <th>categoria</th>
-                  <th>marca</th>
-                  <th>Precio</th> 
+                  <th>Descripcion</th> 
+                  <th>Precio</th>                 
+                  <th>Marca</th>
+                  <th>Categoria</th>
+                  <th>SubCategoria</th>                  
 				          <th>Acciones</th>
                 </tr>
               </thead>
@@ -134,15 +157,18 @@ if(isset($_POST['buscar'])){
                             
                                                
              
-					foreach($prod->filtrosProductos($xnombre,$xcategorias,$xmarcas) as $producto2){ ?>
+					foreach($prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria) as $producto2){ ?>
               
 						<tr>
 						  <td><?php echo $producto2['id_producto'];?></td>
 						  <td><?php echo $producto2['nombre'];?></td> 
 						  <td><?php echo $producto2['descripcion'];?></td>
-              <td><?php echo $producto2['descategoria'];?></td>
-              <td><?php echo $producto2['descmarca'];?></td>
               <td><?php echo $producto2['precio'];?></td>
+              <td><?php echo $producto2['descmarca'];?></td>
+              <td><?php echo $producto2['descrpcategoria'];?></td>
+              <td><?php echo $producto2['descrpSubcategoria'];?></td>
+           
+              
 						  <td>
 						      <a href="productos_ae.php?edit=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
 							    <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>

@@ -22,6 +22,13 @@ Class Categoria{
         return $this->con->query($query); 
 	}
 
+	public function getListCategoria(){
+		$query = "SELECT id_categoria, nombre 
+                   FROM categ 
+                   WHERE id_padre = 0";
+        return $this->con->query($query); 
+	}
+
 	
 	
 	public function get($id){
