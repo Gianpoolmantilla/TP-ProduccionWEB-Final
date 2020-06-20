@@ -11,12 +11,6 @@ include('clases/AbmCategorias.php');
 
 
 
-$hostname = '127.0.0.1';
-$database = 'tp2';
-$username = 'root';
-$password = '';
-$port= 3306;
-
 
 try {
         $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
@@ -27,6 +21,7 @@ try {
 
 
 $user = new Usuario($con);
+
 
 if(isset($_POST['login'])){
 	$user->login($_POST);
@@ -40,6 +35,8 @@ if(isset($_GET['logout'])){
 if($user->notLogged()){
 	 header('Location: login.php');
 }
+
+
 ?>
 <html lang="en">
 	<head>
