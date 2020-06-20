@@ -9,13 +9,9 @@ require('inc/header.php');
       <?php $userMenu = 'Usuarios';
 	include('inc/side_bar.php');
 	
-	
-	   if(  !in_array('user.add',$_SESSION['usuario']['permisos']) &&
-			!in_array('user.del',$_SESSION['usuario']['permisos']) &&		
-			!in_array('user.edit',$_SESSION['usuario']['permisos']) &&
-			!in_array('user.see',$_SESSION['usuario']['permisos'])){ 
-				header('Location: index.php');
-			}
+    if(  !in_array('usuarios',$_SESSION['usuario']['permisos'])){ 
+        header('Location: index.php');
+    }
 	
 	$perfil = new Perfil($con); 
 	

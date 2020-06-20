@@ -6,6 +6,14 @@ require('inc/header.php');
 <div class="container-fluid">
       
       <?php $marcasMenu = 'Marcas';
+
+
+if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){ 
+      header('Location: index.php');
+      }
+  
+
+
 	include('inc/side_bar.php');
 	
 	$marcas = new Marca($con); 

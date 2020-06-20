@@ -5,12 +5,16 @@ require('inc/header.php');
 
 <div class="container-fluid">
       
-      <?php $categoriasMenu = 'Categorias';
+      <?php $categoriasMenu = 'Sub-Categorias';
 	include('inc/side_bar.php');
 	
     $categorias = new Categoria($con); 
     
-    
+    if( in_array('subcategorias',$_SESSION['usuario']['permisos'])){
+
+        header('Location: index.php');
+
+    }
 	
 	if(isset($_GET['edit'])){
             $categoria = $categorias->get($_GET['edit']); 

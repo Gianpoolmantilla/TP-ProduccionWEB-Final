@@ -6,11 +6,18 @@ require('inc/header.php');
 <div class="container-fluid">
       
       <?php $productsMenu = 'Productos';
+
+  
+if(  !in_array('productos',$_SESSION['usuario']['permisos'])){ 
+  header('Location: index.php');
+}
+
+
 	include('inc/side_bar.php');
     $prod = new ABMproductos($con);
     
     if(isset($_POST['formulario_productos'])){ 
-	    if($_POST['id'] > 0){
+	    if($_POST['id_producto'] > 0){
                 $prod->edit($_POST); 
                
 	    }else{

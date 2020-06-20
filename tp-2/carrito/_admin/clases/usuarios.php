@@ -114,9 +114,11 @@ Class Usuario{
 			}
 			
             foreach($data as $key => $value){
-                if($value != null){
-                    $columns[]=$key." = '".$value."'"; 
-                }
+				if(!is_array($value)){
+					if($value != null){
+						$columns[]=$key." = '".$value."'"; 
+					}
+				}	
             }
             $sql = "UPDATE usuarios SET ".implode(',',$columns)." WHERE id_usuario = ".$id;
             
@@ -167,27 +169,27 @@ Class Usuario{
 	* Login de usuario
 	*/
 	
-        public function login($data){
-            $sql = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo,salt
-		           FROM usuarios WHERE activo = 1 AND usuario = '".$data['usuario']."'";
-			$datos = $this->con->query($sql)->fetch(PDO::FETCH_ASSOC);
- 			if(isset($datos['id_usuario'])){
-				if($this->encrypt($data['clave'],$datos['salt']) == $datos['clave']){
-				
-					$_SESSION['usuario'] = $datos;
-					$query = "SELECT cod FROM permisos
-							  INNER JOIN perfil_permisos ON (perfil_permisos.permiso_id = permisos.id)
-							  INNER JOIN usuarios_perfiles ON (usuarios_perfiles.perfil_id = perfil_permisos.perfil_id)
-							  WHERE usuario_id = ".$datos['id_usuario'];
-					$permisos = array();
-					foreach($this->con->query($query) as $key => $value){
-						$permisos[$key] = $value['cod'];
-					}	
-						
-					$_SESSION['usuario']['permisos'] = $permisos;
-				}
-			} 
-        }
+	public function login($data){
+		$sql = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo,salt
+			   FROM usuarios WHERE activo = 1 AND usuario = '".$data['usuario']."'";
+		$datos = $this->con->query($sql)->fetch(PDO::FETCH_ASSOC);
+		 if(isset($datos['id_usuario'])){
+			if($this->encrypt($data['clave'],$datos['salt']) == $datos['clave']){
+			
+				$_SESSION['usuario'] = $datos;
+				$query = "SELECT nombre FROM permisos2
+						  INNER JOIN perfil_permisos ON (perfil_permisos.permiso_id = permisos2.id)
+						  INNER JOIN usuarios_perfiles ON (usuarios_perfiles.perfil_id = perfil_permisos.perfil_id)
+						  WHERE usuario_id = ".$datos['id_usuario'];
+				$permisos = array();
+				foreach($this->con->query($query) as $key => $value){
+					$permisos[$key] = $value['nombre'];
+				}	
+					
+				$_SESSION['usuario']['permisos'] = $permisos;
+			}
+		} 
+	}
 		
 		/**
 	* Login de usuario

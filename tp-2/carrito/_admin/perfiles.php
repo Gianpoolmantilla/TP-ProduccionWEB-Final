@@ -4,7 +4,11 @@ require('inc/header.php');
 
 <div class="container-fluid">
       
-      <?php $perfilMenu = 'Perfiles';
+	  <?php $perfilMenu = 'Perfiles';
+	  
+	if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){ 
+		header('Location: index.php');
+	}  	
 	  
 	 $perfiles = new Perfil($con);
 	include('inc/side_bar.php');

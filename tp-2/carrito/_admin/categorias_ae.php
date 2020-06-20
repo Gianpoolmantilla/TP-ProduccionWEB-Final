@@ -6,7 +6,11 @@ require('inc/header.php');
 <div class="container-fluid">
       
       <?php $categoriasMenu = 'Categorias';
-	include('inc/side_bar.php');
+  include('inc/side_bar.php');
+  
+  if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){ 
+    header('Location: index.php');
+    }    
 	
     $categorias = new Categoria($con); 
     

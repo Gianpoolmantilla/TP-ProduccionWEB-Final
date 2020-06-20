@@ -10,14 +10,9 @@ require('inc/header.php');
       $userMenu = 'Productos';
 	include('inc/side_bar.php');
 	
-	/*
-	   if(  !in_array('new.add',$_SESSION['usuario']['permisos']) &&
-			!in_array('new.del',$_SESSION['usuario']['permisos']) &&		
-			!in_array('new.edit',$_SESSION['usuario']['permisos']) &&
-			!in_array('new.see',$_SESSION['usuario']['permisos'])){ 
-				header('Location: index.php');
-			}
-	*/
+    if(  !in_array('productos',$_SESSION['usuario']['permisos'])){ 
+		header('Location: index.php');
+    }	
     $prod = new ABMproductos($con); 
     $marcas = new Marca($con); 
     $categorias = new Categoria ($con);
