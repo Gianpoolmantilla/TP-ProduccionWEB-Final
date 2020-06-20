@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2020 a las 11:07:27
+-- Tiempo de generación: 21-06-2020 a las 01:29:39
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,16 +25,33 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_mc` VARCHAR(100))  SELECT p.id_producto id_producto, p.nombre nombre, p.descripcion descripcion,c.nombre descategoria ,m.descripcion descmarca, p.precio precio
-FROM prod p 
-INNER JOIN categ c ON c.id_categoria = p.id_categoria 
-INNER JOIN marc m on m.id_marca = p.id_marca 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_mc` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_subcat` VARCHAR(100))  SELECT 
+      p.id_producto id_producto , 
+      p.nombre nombre,
+	  p.precio precio,
+      p.descripcion descripcion,
+      m.id_marca id_marca,
+      m.descripcion descmarca,      
+      cat.id_categoria id_categoria,
+      cat.nombre descrpcategoria,
+      Subcat.id_categoria id_subcategoria,
+      Subcat.nombre descrpSubcategoria 
+FROM 
+     prod p 
+INNER JOIN 
+     categ Subcat ON Subcat.id_categoria = p.id_categoria 
+LEFT JOIN 
+     categ cat ON  cat.id_categoria = Subcat.id_padre
+INNER JOIN 
+      marc m on m.id_marca = p.id_marca 
 WHERE 
-c.nombre =(CASE WHEN _cat = '' THEN c.nombre else _cat END )
+      p.nombre LIKE CONCAT('%', _nom , '%')
 AND
-m.descripcion = (CASE WHEN _mc = '' THEN m.descripcion else _mc END )
+     m.id_marca = (CASE WHEN _mc = '' THEN m.id_marca else _mc END )
 AND
-p.nombre LIKE CONCAT('%', _nom , '%')$$
+    cat.id_categoria = (CASE WHEN _cat = '' THEN cat.id_categoria else _cat END )
+AND
+    Subcat.id_categoria =(CASE WHEN _subcat = '' THEN Subcat.id_categoria else  _subcat END )$$
 
 DELIMITER ;
 
@@ -215,7 +232,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, `email`, `tipo`, `activo`, `salt`) VALUES
 (1, 'Admin', 'Sistema', 'admin', '207acd61a3c1bd506d7e9a4535359f8a', 'admin@carrito.com', 1, 1, 'salt'),
-(20, 'adrian', 'balquinta', 'adrian.balquinta', 'd0e1c75ebb04e671cd5d0d224a570e90', 'adrian@gmail.com', 0, 1, '5eed717ba1e55'),
+(20, 'adrian', 'balquinta', 'adrian.balquinta', 'd0e1c75ebb04e671cd5d0d224a570e90', 'adrian@gmail.com', 0, 0, '5eed717ba1e55'),
 (21, 'juan', 'perez', 'juan.perez', '0d2846c41a4cdc8bbd704042f4a1f9e0', '', 0, 0, '5eedb9b04f111'),
 (22, 'juan', 'perez', 'juan.perez', '6d16c598a274ba27fd491d94b578dbc5', 'adrian@gmail.com', 0, 1, '5eedb9ddf3af2');
 
