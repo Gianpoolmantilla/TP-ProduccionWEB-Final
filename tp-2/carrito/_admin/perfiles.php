@@ -23,13 +23,13 @@ require('inc/header.php');
                 $perfiles->save($_POST); 
         }
 		
-		header('Location: perfiles.php');
+		// header('Location: perfiles.php');
 	}	
 	 
 	if(isset($_GET['del'])){
 			$resp = $perfiles->del($_GET['del']) 	;
             if($resp == 1){
-				header('Location: perfiles.php');	
+				// header('Location: perfiles.php');	
 			}
 			echo '<script>alert("'.$resp.'");</script>';
 
@@ -52,7 +52,7 @@ require('inc/header.php');
           </h1>
  
 
-          <h2 class="sub-header">Listado <a href="perfiles_ae.php"><button type="button" class="btn btn-success" title="Agregar">A</button></a></h2>
+          <h2 class="sub-header">Listado <a href="perfiles_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a></h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -70,8 +70,8 @@ require('inc/header.php');
 						  <td><?php echo $perfil['id'];?></td>
 						  <td><?php echo $perfil['nombre'];?></td> 
 						  <td>
-						      <a href="perfiles_ae.php?edit=<?php echo $perfil['id']?>"><button type="button" class="btn btn-info" title="Modificar">M</button></a>
-							  <a href="perfiles.php?del=<?php echo $perfil['id']?>"><button type="button" class="btn btn-danger" title="Borrar">X</button></a>
+						      <a href="perfiles_ae.php?edit=<?php echo $perfil['id']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="perfiles.php?del=<?php echo $perfil['id']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                

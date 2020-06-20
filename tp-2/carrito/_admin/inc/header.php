@@ -10,7 +10,11 @@ include('clases/AbmMarcas.php');
 include('clases/AbmCategorias.php');
 
 
-
+$hostname = '127.0.0.1';
+$database = 'tp2';
+$username = 'root';
+$password = '';
+$port= 3306;
 
 try {
         $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
@@ -57,6 +61,28 @@ if($user->notLogged()){
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+    
+  <script type = "text/javascript">
+  function ConfirmAprobacion()
+  {
+    var respuesta =confirm("¿Estas seguro que desea Aprobar?");
+    if(respuesta == true){
+        return true;
+    }else{
+        return false;
+    }
+  }
+  function ConfirmDelete()
+  {
+    var respuesta =confirm("¿Estas seguro que desea eliminar?");
+    if(respuesta == true){
+        return true;
+    }else{
+        return false;
+    }
+  }
+</script>	 
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">

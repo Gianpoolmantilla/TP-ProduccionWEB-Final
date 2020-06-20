@@ -25,21 +25,21 @@ if(  !in_array('comentarios',$_SESSION['usuario']['permisos'])){
                 $coment->save($_POST); 
         }
 		
-		header('Location: comentarios.php');
+		// header('Location: comentarios.php');
 	}	
 	 
 	if(isset($_GET['del'])){
     $coment->del($_GET['del']);
-    header('Location: comentarios.php');
+    // header('Location: comentarios.php');
     }
     if(isset($_GET['update'])){
         $coment->update($_GET['update']);
-        header('Location: comentarios.php');
+        // header('Location: comentarios.php');
 	}
 
         ?>
 
-<script type = "text/javascript">
+<!-- <script type = "text/javascript">
   function ConfirmAprobacion()
   {
     var respuesta =confirm("¿Estas seguro que desea Aprobar?");
@@ -58,7 +58,7 @@ if(  !in_array('comentarios',$_SESSION['usuario']['permisos'])){
         return false;
     }
   }
-</script>	  
+</script>	   -->
         
         <div class="col-sm-9 col-md-10 main">
           

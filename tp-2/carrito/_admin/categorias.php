@@ -7,7 +7,8 @@ require('inc/header.php');
       <?php $categoriasMenu = 'Categorias';
 
 if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){ 
-  header('Location: index.php');
+  //header('Location: index.php');
+  // echo '<script>window.location="_admin\categorias.php"';
   }    
 	  
 	 $categorias = new Categoria($con);
@@ -23,14 +24,16 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
                 $categorias->save($_POST); 
         }
 		
-		header('Location: categorias.php');
+   // header('Location: categorias.php');
+    // echo '<script>window.location="_admin\categorias.php"';
     }
     	
     
     if(isset($_GET['delpadre'])){
         $resp = $categorias->delCategoriaPadre($_GET['delpadre']) 	;
         if($resp == 1){
-           header('Location: categorias.php');	
+          // header('Location: categorias.php');
+          // echo '<script>window.location="_admin\categorias.php"';	
         }
         echo '<script>alert("'.$resp.'");</script>';
 
@@ -40,7 +43,8 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 	if(isset($_GET['del'])){
 			$resp = $categorias->del($_GET['del']) 	;
             if($resp == 1){
-			//	header('Location: categorias.php');	
+      //	header('Location: categorias.php');	
+      // echo '<script>window.location="_admin\categorias.php"';
 			}
 			echo '<script>alert("'.$resp.'");</script>';
 
@@ -85,7 +89,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 						  <td><?php echo $categoria['nombre'];?></td> 
 						  <td>
 						      <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
+							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                

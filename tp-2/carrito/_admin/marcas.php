@@ -24,15 +24,15 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
                 $marcas->save($_POST); 
         }
 		
-		header('Location: marcas.php');
+		// header('Location: marcas.php');
 	}	
 	 
 	if(isset($_GET['del'])){
 			$resp = $marcas->del($_GET['del']) 	;
             if($resp == 1){
-				header('Location: marcas.php');	
+				// header('Location: marcas.php');	
 			}
-			echo '<script>alert("'.$resp.'");</script>';
+			 echo '<script>alert("'.$resp.'");</script>';
 
 	}
 	
@@ -72,7 +72,7 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
 						  <td><?php echo $marca['descripcion'];?></td> 
 						  <td>
 						      <a href="marcas_ae.php?edit=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
+							  <a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                

@@ -29,7 +29,7 @@ require('inc/header.php');
 
 	if(isset($_GET['del'])){
             $user->del($_GET['del']);
-            header('Location: usuarios.php');
+            // header('Location: usuarios.php');
 
 	}
 
@@ -102,7 +102,7 @@ require('inc/header.php');
 										<a href="usuarios_ae.php?edit=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
 								  
 								   
-										<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
+										<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 								
 							  </td>
 							</tr>

@@ -25,13 +25,13 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
                 $prod->save($_POST); 
         }
 		
-		header('Location: productos.php');
+		// header('Location: productos.php');
 	}	
 	 
 	if(isset($_GET['del'])){
     
     $prod->del($_GET['del']);
-    header('Location: productos.php');
+    // header('Location: productos.php');
 
   }
   $marcas = new Marca($con);
@@ -145,7 +145,7 @@ if(isset($_POST['buscar'])){
               <td><?php echo $producto2['precio'];?></td>
 						  <td>
 						      <a href="productos_ae.php?edit=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							    <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar"><i class="far fa-trash-alt"></i></button></a>
+							    <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					    </td>
 						</tr>
 				    <?php }?>  
