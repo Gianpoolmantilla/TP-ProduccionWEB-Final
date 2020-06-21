@@ -48,7 +48,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
     $p=$prod->get($_GET['del']);
     if(isset($p->imagen)){
     
-     // eliminar_archivos('img/product',$p->imagen);
+     eliminar_archivos('img/product',$p->imagen);
     }
     $prod->del($_GET['del']);
     

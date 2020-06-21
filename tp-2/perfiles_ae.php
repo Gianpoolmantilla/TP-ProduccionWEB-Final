@@ -15,7 +15,7 @@ if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){
 	
 	$perfil = new Perfil($con); 
 	
-	$query = 'SELECT * FROM permisos';
+	$query = 'SELECT * FROM permisos2';
 	$permisos = $con->query($query);
 	
 	if(isset($_GET['edit'])){
@@ -48,7 +48,7 @@ if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){
                 <div class="form-group">
                     <label for="tipo" class="col-sm-2 control-label">Permisos</label>
                     <div class="col-sm-10">
-                        <select name="permisos[]" id="permisos" multiple='multiple' >
+                        <select name="permisos[]" id="permisos" multiple='multiple' required>
                             <?php  foreach($permisos as $t){?>
                                 <option value="<?php echo $t['id']?>"
 								<?php 

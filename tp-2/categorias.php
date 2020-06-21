@@ -7,7 +7,7 @@ require('header.php');
       <?php $categoriasMenu = 'Categorias';
 
 if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){ 
-  //header('Location: index.php');
+  header('Location: index.php');
   // echo '<script>window.location="_admin\categorias.php"';
   }    
 	  
@@ -24,7 +24,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
                 $categorias->save($_POST); 
         }
 		
-   // header('Location: categorias.php');
+    header('Location: categorias.php');
     // echo '<script>window.location="_admin\categorias.php"';
     }
     	
@@ -32,7 +32,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
     if(isset($_GET['delpadre'])){
         $resp = $categorias->delCategoriaPadre($_GET['delpadre']) 	;
         if($resp == 1){
-          // header('Location: categorias.php');
+          header('Location: categorias.php');
           // echo '<script>window.location="_admin\categorias.php"';	
         }
         echo '<script>alert("'.$resp.'");</script>';
@@ -43,7 +43,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 	if(isset($_GET['del'])){
 			$resp = $categorias->del($_GET['del']) 	;
             if($resp == 1){
-      //	header('Location: categorias.php');	
+      	header('Location: categorias.php');	
       // echo '<script>window.location="_admin\categorias.php"';
 			}
 			echo '<script>alert("'.$resp.'");</script>';

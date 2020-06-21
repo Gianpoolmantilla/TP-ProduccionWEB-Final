@@ -6,7 +6,7 @@ require('header.php');
       
       <?php $subCategoriasMenu = 'Sub-categorias';
 
-if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){ 
+if(  !in_array('subcategorias',$_SESSION['usuario']['permisos'])){ 
   header('Location: index.php');
 }    
 	  
@@ -14,7 +14,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 	include('side_bar.php');
 	 
 	//var_dump($_POST); die(); 
-	if(isset($_POST['formulario_categorias'])){ 
+	if(isset($_POST['formulario_subcategorias'])){ 
 	    if($_POST['id_categoria'] > 0){
                 $categorias->edit($_POST); 
                
@@ -23,7 +23,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
                 $categorias->save($_POST); 
         }
 		
-     header('Location: categorias.php');
+    // header('Location: subCategorias.php');
     //echo '<script>window.location="_admin\categorias.php"';
     }
     	
@@ -31,7 +31,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
     if(isset($_GET['delpadre'])){
         $resp = $categorias->delCategoriaPadre($_GET['delpadre']) 	;
         if($resp == 1){
-             header('Location: categorias.php');
+         //    header('Location: subCategorias.php');
          //   echo '<script>window.location="_admin\categorias.php"';	
         }
         echo '<script>alert("'.$resp.'");</script>';
@@ -42,7 +42,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 	if(isset($_GET['del'])){
 			$resp = $categorias->del($_GET['del']) 	;
             if($resp == 1){
-         header('Location: categorias.php');
+      //   header('Location: subCategorias.php');
      //   echo '<script>window.location="_admin\categorias.php"';		
 			}
 			echo '<script>alert("'.$resp.'");</script>';
@@ -92,7 +92,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 						  <td><?php echo $subCategoria['nombre'];?></td> 
 						  <td>
 						      <a href="subCategorias_ae.php?edit=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <a href="categorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+							  <a href="subcategorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                

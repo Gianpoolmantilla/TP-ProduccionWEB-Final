@@ -10,7 +10,7 @@ require('header.php');
 	
     $categorias = new Categoria($con); 
     
-    if( in_array('subcategorias',$_SESSION['usuario']['permisos'])){
+    if( !in_array('subcategorias',$_SESSION['usuario']['permisos'])){
 
         header('Location: index.php');
 
@@ -35,18 +35,18 @@ require('header.php');
           </h1>
   
          
-            <form action="categorias.php" method="post" class="col-md-6 from-horizontal">
+            <form action="subCategorias.php" method="post" class="col-md-6 from-horizontal">
                 <div class="form-group">
                     <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo (isset($categoria->nombre)?$categoria->nombre:'');?>">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo (isset($categoria->nombre)?$categoria->nombre:'');?>" required>
                     </div>
                 </div> 
             
                 <div class="form-group">
                     <label for="tipo" class="col-sm-2 control-label">Categoria Padre</label>
                     <div class="col-sm-10">
-                        <select name="id_padre" id="id_padre">
+                        <select name="id_padre" id="id_padre" required>
                             <?php  foreach($categorias->getList() as $t){?>
                                 <option value="<?php echo $t['id_categoria']?>"
                                 <?php 
@@ -65,7 +65,8 @@ require('header.php');
                  
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" name="formulario_categorias" >Guardar</button>
+                    <button type="submit" class="btn btn-success" name="formulario_subcategorias" >Guardar</button>
+                    <a href="<?=$_SERVER["HTTP_REFERER"]?>"><button type="button" class="btn btn-danger" title="Agregar">atras</button></a>
                     </div>
                 </div> 
                 <input type="hidden" class="form-control" id="id" name="id_categoria" placeholder="" value="<?php echo (isset($categoria->id_categoria)?$categoria->id_categoria:'');?>">
@@ -74,7 +75,7 @@ require('header.php');
           </div>
  </div>                         
           
-      </div><!--/row-->
+      </div>--/row-->
 	</div>
 </div><!--/.container-->
 

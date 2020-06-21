@@ -44,7 +44,7 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
                 <div class="form-group">
                     <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nombre" name="descripcion" placeholder="" value="<?php echo (isset($marca->descripcion)?$marca->descripcion:'');?>">
+                        <input type="text" class="form-control" id="nombre" name="descripcion" placeholder="" value="<?php echo (isset($marca->descripcion)?$marca->descripcion:'');?>" required>
                     </div>
                 </div> 
                  

@@ -49,7 +49,8 @@ Class Categoria{
 			$query = "DELETE FROM categ WHERE id_categoria = ".$id; 
 					 
 
-			return $this->con->exec($query); 
+			 $this->con->exec($query); 
+			return "Se elimino exitosamente";
 		}
 		return 'Categoria asignada a una subcategoria';
 	}
@@ -62,9 +63,10 @@ Class Categoria{
 			$query = "DELETE FROM categ WHERE id_categoria = ".$id; 
 					 
 
-			return $this->con->exec($query); 
+			 $this->con->exec($query); 
+			 return "Se elimino exitosamente";
 		}
-		return 'Categoria asignada a un producto';
+		return 'Sub-categoria asignada a un producto';
 	}
 	
 	/**

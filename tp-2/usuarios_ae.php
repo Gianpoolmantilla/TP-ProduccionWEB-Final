@@ -38,37 +38,37 @@ require('header.php');
                 <div class="form-group">
                     <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo isset($usuario->nombre)?$usuario->nombre:'';?>">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="<?php echo isset($usuario->nombre)?$usuario->nombre:'';?>" required>
                     </div>
                 </div> 
                  <div class="form-group">
                     <label for="apellido" class="col-sm-2 control-label">Apellido</label>
                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="" value="<?php echo isset($usuario->apellido)?$usuario->apellido:'';?>">
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="" value="<?php echo isset($usuario->apellido)?$usuario->apellido:'';?>" required>
                     </div>
                 </div> 
                  <div class="form-group">
                     <label for="usuario" class="col-sm-2 control-label">Usuario</label>
                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="" value="<?php echo isset($usuario->usuario)?$usuario->usuario:'';?>">
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="" value="<?php echo isset($usuario->usuario)?$usuario->usuario:'';?>" required>
                     </div>
                 </div> 
                  <div class="form-group">
                     <label for="calve" class="col-sm-2 control-label">Clave</label>
                      <div class="col-sm-10">
-                        <input type="password" class="form-control" id="clave" name="clave" placeholder="">
+                        <input type="password" class="form-control" id="clave" name="clave" placeholder="" >
                     </div>
                 </div> 
                  <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">e-Mail</label>
                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="" value="<?php echo isset($usuario->email)?$usuario->email:'';?>">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="" value="<?php echo isset($usuario->email)?$usuario->email:'';?>" required>
                     </div>
                 </div> 
                 <div class="form-group">
                     <label for="tipo" class="col-sm-2 control-label">Perfil</label>
                     <div class="col-sm-10">
-                        <select name="perfil[]" id="perfil" multiple='multiple' >
+                        <select name="perfil[]" id="perfil" multiple='multiple' required >
                             <?php  foreach($perfil->getList() as $t){?>
                                 <option value="<?php echo $t['id']?>" 
 								<?php 
@@ -87,7 +87,7 @@ require('header.php');
                     <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                         <label>
-                        <input type="checkbox" name="activo" value="1" <?php echo (isset($usuario->activo)?(($usuario->activo == 1) ?'checked':''):'');?>> Activo
+                        <input type="checkbox" name="activo" value="1" <?php echo (isset($usuario->activo)?(($usuario->activo == 1) ?'checked':''):'');?> required> Activo
                         </label>
                     </div>
                     </div>
