@@ -94,7 +94,8 @@ require('inc/header.php');
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" name="submit" >Guardar</button>
+                    <button type="submit" class="btn btn-success" name="submit" >Guardar</button>
+                    <a href="<?=$_SERVER["HTTP_REFERER"]?>"><button type="button" class="btn btn-danger" title="Agregar">atras</button></a>
                     </div>
                 </div> 
                 <input type="hidden" class="form-control" id="id_usuario" name="id_usuario" placeholder="" value="<?php echo isset($usuario->id_usuario)?$usuario->id_usuario:'';?>">

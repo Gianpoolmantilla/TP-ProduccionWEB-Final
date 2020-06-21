@@ -47,7 +47,8 @@ require('inc/header.php');
                  
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" name="formulario_categorias" >Guardar</button>
+                    <button type="submit" class="btn btn-success" name="formulario_categorias" >Guardar</button>
+                    <a href="<?=$_SERVER["HTTP_REFERER"]?>"><button type="button" class="btn btn-danger" title="Agregar">atras</button></a>
                     </div>
                 </div> 
                 <input type="hidden" class="form-control" id="id" name="id_categoria" placeholder="" value="<?php echo (isset($categoria->id_categoria)?$categoria->id_categoria:'');?>">

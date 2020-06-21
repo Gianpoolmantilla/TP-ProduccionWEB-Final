@@ -66,7 +66,8 @@ if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){
                  
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" name="formulario_perfiles" >Guardar</button>
+                    <button type="submit" class="btn btn-success" name="formulario_perfiles" >Guardar</button>
+                    <a href="<?=$_SERVER["HTTP_REFERER"]?>"><button type="button" class="btn btn-danger" title="Agregar">atras</button></a>
                     </div>
                 </div> 
                 <input type="hidden" class="form-control" id="id" name="id" placeholder="" value="<?php echo (isset($perfiles->id)?$perfiles->id:'');?>">

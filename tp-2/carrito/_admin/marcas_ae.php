@@ -52,7 +52,8 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
                  
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" name="formulario_marcas" >Guardar</button>
+                    <button type="submit" class="btn btn-success" name="formulario_marcas" >Guardar</button>
+                    <a href="<?=$_SERVER["HTTP_REFERER"]?>"><button type="button" class="btn btn-danger" title="Agregar">atras</button></a>
                     </div>
                 </div> 
                 <input type="hidden" class="form-control" id="id" name="id_marca" placeholder="" value="<?php echo (isset($marca->id_marca)?$marca->id_marca:'');?>">
