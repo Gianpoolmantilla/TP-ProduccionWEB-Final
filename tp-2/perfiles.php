@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php'); 
+require('header.php'); 
 ?> 
 
 <div class="container-fluid">
@@ -11,7 +11,7 @@ require('inc/header.php');
 	}  	
 	  
 	 $perfiles = new Perfil($con);
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	 
 	 
 	if(isset($_POST['formulario_perfiles'])){ 
@@ -23,13 +23,13 @@ require('inc/header.php');
                 $perfiles->save($_POST); 
         }
 		
-		// header('Location: perfiles.php');
+		header('Location: perfiles.php');
 	}	
 	 
 	if(isset($_GET['del'])){
 			$resp = $perfiles->del($_GET['del']) 	;
             if($resp == 1){
-				// header('Location: perfiles.php');	
+				 header('Location: perfiles.php');	
 			}
 			echo '<script>alert("'.$resp.'");</script>';
 
@@ -84,4 +84,4 @@ require('inc/header.php');
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

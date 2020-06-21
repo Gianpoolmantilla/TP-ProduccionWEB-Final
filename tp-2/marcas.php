@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php'); 
+require('header.php'); 
 ?> 
 
 <div class="container-fluid">
@@ -12,7 +12,7 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
 
 	  
 	 $marcas = new Marca($con);
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	 
 	 
 	if(isset($_POST['formulario_marcas'])){ 
@@ -24,13 +24,13 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
                 $marcas->save($_POST); 
         }
 		
-		// header('Location: marcas.php');
+		 header('Location: marcas.php');
 	}	
 	 
 	if(isset($_GET['del'])){
 			$resp = $marcas->del($_GET['del']) 	;
             if($resp == 1){
-				// header('Location: marcas.php');	
+				 header('Location: marcas.php');	
 			}
 			 echo '<script>alert("'.$resp.'");</script>';
 
@@ -85,4 +85,4 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

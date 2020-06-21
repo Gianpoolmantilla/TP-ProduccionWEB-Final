@@ -1,18 +1,17 @@
 <?php 
-require('inc/header.php'); 
+require('header.php'); 
 ?> 
 
 <div class="container-fluid">
       
-      <?php $categoriasMenu = 'Categorias';
+      <?php $subCategoriasMenu = 'Sub-categorias';
 
 if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){ 
-  //header('Location: index.php');
-  // echo '<script>window.location="_admin\categorias.php"';
-  }    
+  header('Location: index.php');
+}    
 	  
 	 $categorias = new Categoria($con);
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	 
 	//var_dump($_POST); die(); 
 	if(isset($_POST['formulario_categorias'])){ 
@@ -24,16 +23,16 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
                 $categorias->save($_POST); 
         }
 		
-   // header('Location: categorias.php');
-    // echo '<script>window.location="_admin\categorias.php"';
+     header('Location: categorias.php');
+    //echo '<script>window.location="_admin\categorias.php"';
     }
     	
     
     if(isset($_GET['delpadre'])){
         $resp = $categorias->delCategoriaPadre($_GET['delpadre']) 	;
         if($resp == 1){
-          // header('Location: categorias.php');
-          // echo '<script>window.location="_admin\categorias.php"';	
+             header('Location: categorias.php');
+         //   echo '<script>window.location="_admin\categorias.php"';	
         }
         echo '<script>alert("'.$resp.'");</script>';
 
@@ -43,8 +42,8 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 	if(isset($_GET['del'])){
 			$resp = $categorias->del($_GET['del']) 	;
             if($resp == 1){
-      //	header('Location: categorias.php');	
-      // echo '<script>window.location="_admin\categorias.php"';
+         header('Location: categorias.php');
+     //   echo '<script>window.location="_admin\categorias.php"';		
 			}
 			echo '<script>alert("'.$resp.'");</script>';
 
@@ -65,12 +64,16 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
           </p>
           
 		  <h1 class="page-header">
-            Categorias
+          Sub-Categorias
           </h1>
  
 
-          <h2 class="sub-header"></h2>
-          <a href="categorias_ae.php?id_padre=0"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
+         
+
+
+           
+          
+          <a href="subCategorias_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -82,29 +85,24 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
               </thead>
 			  <tbody>
 				<?php  	 
-					foreach($categorias->getList() as $categoria){?>
+					foreach($categorias->getListSubCategoria() as $subCategoria){?>
               
 						<tr>
-						  <td><?php echo $categoria['id_categoria'];?></td>
-						  <td><?php echo $categoria['nombre'];?></td> 
+						  <td><?php echo $subCategoria['id_categoria'];?></td>
+						  <td><?php echo $subCategoria['nombre'];?></td> 
 						  <td>
-						      <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+						      <a href="subCategorias_ae.php?edit=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <a href="categorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      </td>
 						</tr>
 				    <?php }?>                
               </tbody>
             </table>
-          </div>
-
-
-           
-          
-
+        </div>
         
 
      <!-- </div> /row -->
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

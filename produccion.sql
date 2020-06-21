@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2020 a las 03:13:05
+-- Tiempo de generación: 21-06-2020 a las 21:57:16
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -81,7 +81,12 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `mail`, `telefono`, `mensaje`, `estado`, `fechalta`, `id_producto`) VALUES
-(1, 'adrian', 'adrian@gmail.com', '111222333444', 'Buena onda', 100, '2020-06-15 02:40:30', 1);
+(1, 'adrian', 'adrian@gmail.com', '111222333444', 'Buena onda', 200, '2020-06-15 02:40:30', 1),
+(2, 'jorge', 'jorge@gmail.com', '1548775', 'muy bueno el producto', 200, '2020-06-20 22:30:16', 1),
+(3, 'jorge', 'jorge@gmail.com', '1548775', 'muy bueno el producto', 100, '2020-06-20 22:30:48', 1),
+(4, 'jose jose', '22@gmail.com', '123456', 'excelente', 200, '2020-06-21 16:23:30', 1),
+(5, 'romina', 'ro@gmail.com', '4444', 'muy recomedando!! de 10 el producto', 100, '2020-06-21 16:24:59', 2),
+(6, 'romina', 'ro@gmail.com', '4444', 'muy recomedando!! de 10 el producto', 100, '2020-06-21 16:25:34', 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +199,8 @@ INSERT INTO `marcas` (`id_marca`, `descripcion`) VALUES
 (11, 'Noganet'),
 (12, 'Motorola'),
 (13, 'Xiaomi'),
-(14, 'Thonet Vander');
+(14, 'Thonet Vander'),
+(17, 'lala');
 
 -- --------------------------------------------------------
 
@@ -239,8 +245,11 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_m
 (19, 'Home Theater Thonet Vander', 'Todo en audio y sonido, lo mejor lo encontrás en Thonet. Comprá online a menor precio! Promo en Productos Seleccionados. Comprobá los precios del Audio Sale de Thonet.', 'HomeThonV.PNG', 14, 11, '11.250', 0),
 (20, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'SamsungCel.PNG', 1, 12, '12.500', 0),
 (21, 'Celular Samsung Galaxy A8', 'Celular Samsung Galaxy A8', 'SamsungCel.PNG', 1, 12, '15.000', 0),
-(25, 'otro', 'asd', 'cosa.PNG', 5, 13, '1231', 0),
-(26, 'prueba', 'prueba', '12', 1, 6, '100', 0);
+(25, 'otro', 'asd', 'sintoniNoga - copia.png', 5, 13, '1231', 0),
+(26, 'prueba', 'prueba', '12', 1, 6, '100', 0),
+(27, '545', 'prueba', 'user2.png', 1, 5, '100', 0),
+(28, 'nuvo nueno nuevo', 'sisisisisiisisis', 'iPhone8.png', 1, 5, '158', 0),
+(29, 'aaaa', 'aaa', 'user2222.png', 1, 5, '999', 0);
 
 --
 -- Índices para tablas volcadas
@@ -286,13 +295,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
@@ -304,13 +313,13 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas

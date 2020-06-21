@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2020 a las 07:39:10
+-- Tiempo de generación: 21-06-2020 a las 21:57:56
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,40 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tp2`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_mc` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_subcat` VARCHAR(100))  SELECT 
+      p.id_producto id_producto , 
+      p.nombre nombre,
+	  p.precio precio,
+      p.descripcion descripcion,
+      m.id_marca id_marca,
+      m.descripcion descmarca,      
+      cat.id_categoria id_categoria,
+      cat.nombre descrpcategoria,
+      Subcat.id_categoria id_subcategoria,
+      Subcat.nombre descrpSubcategoria 
+FROM 
+     prod p 
+INNER JOIN 
+     categ Subcat ON Subcat.id_categoria = p.id_categoria 
+LEFT JOIN 
+     categ cat ON  cat.id_categoria = Subcat.id_padre
+INNER JOIN 
+      marc m on m.id_marca = p.id_marca 
+WHERE 
+      p.nombre LIKE CONCAT('%', _nom , '%')
+AND
+     m.id_marca = (CASE WHEN _mc = '' THEN m.id_marca else _mc END )
+AND
+    cat.id_categoria = (CASE WHEN _cat = '' THEN cat.id_categoria else _cat END )
+AND
+    Subcat.id_categoria =(CASE WHEN _subcat = '' THEN Subcat.id_categoria else  _subcat END )$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -79,8 +113,7 @@ CREATE TABLE `perfil` (
 INSERT INTO `perfil` (`id`, `nombre`) VALUES
 (1, 'Administrador'),
 (2, 'Ventas'),
-(3, 'Entregas'),
-(10, ' test2');
+(3, 'Marketing');
 
 -- --------------------------------------------------------
 
@@ -99,16 +132,18 @@ CREATE TABLE `perfil_permisos` (
 --
 
 INSERT INTO `perfil_permisos` (`id`, `perfil_id`, `permiso_id`) VALUES
-(1, 9, 2),
-(2, 9, 3),
-(3, 9, 4),
-(19, 10, 1),
-(20, 10, 4),
-(32, 1, 1),
-(33, 1, 2),
-(34, 1, 3),
-(35, 1, 4),
-(38, 2, 4);
+(29, 1, 1),
+(30, 1, 2),
+(31, 1, 4),
+(32, 1, 3),
+(33, 1, 5),
+(34, 1, 6),
+(35, 1, 7),
+(58, 2, 1),
+(59, 2, 2),
+(60, 2, 3),
+(61, 3, 1),
+(62, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -131,7 +166,31 @@ INSERT INTO `permisos` (`id`, `nombre`, `cod`) VALUES
 (2, 'Modificar usuarios', 'user.edit'),
 (3, 'Borrar Usuarios', 'user.del'),
 (4, 'Ver Usuarios', 'user.see'),
-(5, 'Agregar Noticias', 'new.add');
+(5, 'Agregar Tareas', 'tarea.add');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permisos2`
+--
+
+CREATE TABLE `permisos2` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `permisos2`
+--
+
+INSERT INTO `permisos2` (`id`, `nombre`) VALUES
+(1, 'productos'),
+(2, 'categorias'),
+(3, 'marcas'),
+(4, 'comentarios'),
+(5, 'usuarios'),
+(6, 'perfiles'),
+(7, 'subcategorias');
 
 -- --------------------------------------------------------
 
@@ -173,9 +232,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, `email`, `tipo`, `activo`, `salt`) VALUES
 (1, 'Admin', 'Sistema', 'admin', '207acd61a3c1bd506d7e9a4535359f8a', 'admin@carrito.com', 1, 1, 'salt'),
-(19, 'gian', 'Mantilla', 'gmantilla', 'b7bcfc4794acda356269ba4b6342f6fc', 'gmantilla@gmail.com', 0, 1, '5edefbe4b33ae'),
-(20, 'adrian', 'Balquinta', 'abalquinta', '5b758594468f2d4b6236491eeee487ee', 'abalquinta@gmail.com', 0, 1, '5edefc3386991'),
-(21, 'jorge', 'rodriguez', 'jorge', '465603c71200099a1208f13fbf537346', 'tilla@gmail.com', 0, 0, '5ee1bf333f24c');
+(20, 'adrian', 'balquinta', 'adrian.balquinta', 'd0e1c75ebb04e671cd5d0d224a570e90', 'adrian@gmail.com', 0, 0, '5eed717ba1e55'),
+(21, 'juan', 'perez', 'juan.perez', '0d2846c41a4cdc8bbd704042f4a1f9e0', '', 0, 0, '5eedb9b04f111'),
+(22, 'juan', 'perez', 'juan.perez', '6d16c598a274ba27fd491d94b578dbc5', 'adrian@gmail.com', 0, 1, '5eedb9ddf3af2');
 
 -- --------------------------------------------------------
 
@@ -194,13 +253,11 @@ CREATE TABLE `usuarios_perfiles` (
 --
 
 INSERT INTO `usuarios_perfiles` (`id`, `usuario_id`, `perfil_id`) VALUES
-(19, 19, 2),
-(20, 20, 3),
-(21, 1, 1),
-(22, 21, 1),
-(23, 21, 2),
-(24, 21, 3),
-(25, 21, 10);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(28, 22, 1),
+(29, 20, 2);
 
 -- --------------------------------------------------------
 
@@ -281,6 +338,12 @@ ALTER TABLE `permisos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `permisos2`
+--
+ALTER TABLE `permisos2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -306,13 +369,13 @@ ALTER TABLE `usuarios_tipos`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil_permisos`
 --
 ALTER TABLE `perfil_permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -321,16 +384,22 @@ ALTER TABLE `permisos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `permisos2`
+--
+ALTER TABLE `permisos2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_tipos`

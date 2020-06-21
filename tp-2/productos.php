@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php');
+require('header.php');
 //require('clases/ABMproductos.php');
 ?> 
 
@@ -13,7 +13,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
 }
 
 
-	include('inc/side_bar.php');
+	include('side_bar.php');
     $prod = new ABMproductos($con);
     
     if(isset($_POST['formulario_productos'])){ 
@@ -25,7 +25,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
            $tamanhos = array(0 => array('ancho'=>'263','alto'=>'280'));
             
            $nombre = $_FILES['imagen']['name'];
-           redimensionar('C:/xampp/htdocs/TP-ProduccionWEB/img/product/'.$nombre, $_FILES['imagen']['name'],$_FILES['imagen']['tmp_name'],0,$tamanhos);
+           redimensionar('C:/xampp/htdocs/TP-ProduccionWEB/tp-1/img/product/'.$nombre, $_FILES['imagen']['name'],$_FILES['imagen']['tmp_name'],0,$tamanhos);
            $_POST['imagen']= $nombre;
            
           // var_dump($_POST); 
@@ -41,7 +41,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
                 $prod->save($_POST); 
         }
 		
-		// header('Location: productos.php');
+		 header('Location: productos.php');
 	}	
 	 
 	if(isset($_GET['del'])){
@@ -52,7 +52,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
     }
     $prod->del($_GET['del']);
     
-    // header('Location: productos.php');
+     header('Location: productos.php');
 
   }
   $marcas = new Marca($con);
@@ -205,4 +205,4 @@ if(isset($_POST['buscar'])){
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

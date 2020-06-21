@@ -1,8 +1,8 @@
-<?php include('inc/header.php')?>
+<?php include('header.php')?>
 
 <div class="container-fluid">
       
-      <?php include('inc/side_bar.php');?>
+      <?php include('side_bar.php');?>
 	  
 	  
         
@@ -19,4 +19,4 @@
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

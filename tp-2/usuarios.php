@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php');
+require('header.php');
 //include('clases/usuarios.php');
 ?> 
 
@@ -12,7 +12,7 @@ require('inc/header.php');
 	}
 			
 			
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	 
 	
 	if(isset($_POST['submit'])){ 
@@ -23,13 +23,13 @@ require('inc/header.php');
                 $user->save($_POST); 
         }
 		
-		//header('Location: usuarios.php');
+		header('Location: usuarios.php');
 	}	
 	
 
 	if(isset($_GET['del'])){
             $user->del($_GET['del']);
-            // header('Location: usuarios.php');
+             header('Location: usuarios.php');
 
 	}
 
@@ -116,4 +116,4 @@ require('inc/header.php');
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

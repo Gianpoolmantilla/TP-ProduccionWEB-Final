@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php');
+require('header.php');
  
 ?> 
 
@@ -11,7 +11,7 @@ if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){
     header('Location: index.php');
 }
 
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	
 	$perfil = new Perfil($con); 
 	
@@ -80,4 +80,4 @@ if(  !in_array('perfiles',$_SESSION['usuario']['permisos'])){
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

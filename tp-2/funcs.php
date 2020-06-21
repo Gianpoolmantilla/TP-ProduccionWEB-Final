@@ -108,7 +108,7 @@ function redimensionar($ruta,$file_name,$uploadedfile,$id,$tamanhos){
  //Funcion para borrar imagenes
 function eliminar_archivos($carpeta,$id)
 {
-	$dir = 'C:/xampp/htdocs/TP-ProduccionWEB/'.$carpeta.'/';
+	$dir = 'C:/xampp/htdocs/TP-ProduccionWEB/tp-1/'.$carpeta.'/';
 	
 	if(is_dir($dir)){
 		$directorio=opendir($dir);

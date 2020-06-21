@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php');
+require('header.php');
  
 ?> 
 
@@ -14,7 +14,7 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
   
 
 
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	
 	$marcas = new Marca($con); 
 	/*
@@ -66,4 +66,4 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

@@ -1,5 +1,5 @@
 <?php 
-require('inc/header.php');
+require('header.php');
 
 //include('clases/usuarios.php');
 ?> 
@@ -8,7 +8,7 @@ require('inc/header.php');
       
       <?php 
       $userMenu = 'Productos';
-	include('inc/side_bar.php');
+	include('side_bar.php');
 	
 	/*
 	   if(  !in_array('new.add',$_SESSION['usuario']['permisos']) &&
@@ -98,4 +98,4 @@ require('inc/header.php');
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>

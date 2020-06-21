@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php  session_start();
-include('../inc/db_data.php');
-
+include('db_data.php');
 include('clases/usuarios.php');
 include('clases/perfil.php');
 include('clases/ABMproductos.php');

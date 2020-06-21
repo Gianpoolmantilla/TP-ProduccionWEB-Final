@@ -1,8 +1,7 @@
 <?php 
-require('inc/header.php');
+require('header.php');
 //require('clases/ABMcomentarios.php');
 ?> 
-
 <div class="container-fluid">
       
       <?php $comentariosMenu = 'Comentarios';
@@ -11,9 +10,7 @@ if(  !in_array('comentarios',$_SESSION['usuario']['permisos'])){
   header('Location: index.php');
   }
 
-
-
-	include('inc/side_bar.php');
+	include('side_bar.php');
     $coment = new ABMcomentario($con);
     
     if(isset($_POST['formulario_comentarios'])){ 
@@ -25,40 +22,21 @@ if(  !in_array('comentarios',$_SESSION['usuario']['permisos'])){
                 $coment->save($_POST); 
         }
 		
-		// header('Location: comentarios.php');
+		 header('Location: comentarios.php');
 	}	
 	 
 	if(isset($_GET['del'])){
     $coment->del($_GET['del']);
-    // header('Location: comentarios.php');
+     header('Location: comentarios.php');
     }
     if(isset($_GET['update'])){
         $coment->update($_GET['update']);
-        // header('Location: comentarios.php');
+         header('Location: comentarios.php');
 	}
 
         ?>
 
-<!-- <script type = "text/javascript">
-  function ConfirmAprobacion()
-  {
-    var respuesta =confirm("¿Estas seguro que desea Aprobar?");
-    if(respuesta == true){
-        return true;
-    }else{
-        return false;
-    }
-  }
-  function ConfirmDelete()
-  {
-    var respuesta =confirm("¿Estas seguro que desea eliminar?");
-    if(respuesta == true){
-        return true;
-    }else{
-        return false;
-    }
-  }
-</script>	   -->
+
         
         <div class="col-sm-9 col-md-10 main">
           
@@ -109,4 +87,4 @@ if(  !in_array('comentarios',$_SESSION['usuario']['permisos'])){
 	</div>
 </div><!--/.container-->
 
-<?php include('inc/footer.php');?>
+<?php include('footer.php');?>
