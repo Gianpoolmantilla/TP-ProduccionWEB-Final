@@ -63,8 +63,8 @@ Class Marca{
 
 	
 	public function edit($data){
-			$id = $data['id'];
-			unset($data['id']);
+			$id = $data['id_marca'];
+			unset($data['id_marca']);
             
             foreach($data as $key => $value){
 				if(!is_array($value)){

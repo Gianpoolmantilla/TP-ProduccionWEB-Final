@@ -126,7 +126,7 @@ function eliminar_archivos($carpeta,$id)
 				
 			}
 
-			var_dump(@unlink($dir.$estaFoto));
+			@unlink($dir.$estaFoto);
 		
 		}
 		closedir($directorio); 
