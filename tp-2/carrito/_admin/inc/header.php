@@ -8,6 +8,7 @@ include('clases/ABMproductos.php');
 include('clases/ABMcomentario.php');
 include('clases/AbmMarcas.php');
 include('clases/AbmCategorias.php');
+include('funcs.php');
 
 
 $hostname = '127.0.0.1';

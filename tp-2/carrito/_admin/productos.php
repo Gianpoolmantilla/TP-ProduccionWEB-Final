@@ -17,6 +17,22 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
     $prod = new ABMproductos($con);
     
     if(isset($_POST['formulario_productos'])){ 
+
+      if(isset($_FILES['imagen'])){
+        // var_dump($_FILES);
+         
+         if($_FILES['imagen']['type']=="image/png"){
+           $tamanhos = array(0 => array('ancho'=>'263','alto'=>'280'));
+            
+           $nombre = $_FILES['imagen']['name'];
+           redimensionar('C:/xampp/htdocs/TP-ProduccionWEB/img/product/'.$nombre, $_FILES['imagen']['name'],$_FILES['imagen']['tmp_name'],0,$tamanhos);
+           $_POST['imagen']= $nombre;
+           
+          // var_dump($_POST); 
+         }
+     }   
+
+
 	    if($_POST['id_producto'] > 0){
                 $prod->edit($_POST); 
                
@@ -29,8 +45,13 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
 	}	
 	 
 	if(isset($_GET['del'])){
+    $p=$prod->get($_GET['del']);
+    if(isset($p->imagen)){
     
+     // eliminar_archivos('img/product',$p->imagen);
+    }
     $prod->del($_GET['del']);
+    
     // header('Location: productos.php');
 
   }

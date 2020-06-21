@@ -36,7 +36,7 @@ require('inc/header.php');
           </h1>
   
           <div class="col-md-2"></div>
-            <form action="productos.php" method="post" class="col-md-6 from-horizontal">
+            <form action="productos.php" method="post" class="col-md-6 from-horizontal"  enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nombre" class="col-sm-2 control-label">Producto</label>
                     <div class="col-sm-10">
@@ -60,13 +60,13 @@ require('inc/header.php');
                      <div class="col-sm-10">
                         <input type="password" class="form-control" id="clave" name="clave" placeholder="">
                     </div>
-                </div> --->
+                </div> 
                  <div class="form-group">
                     <label for="imagen" class="col-sm-2 control-label">Imagen</label>
                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="imagen" name="imagen" placeholder="" value="<?php echo isset($producto->imagen)?$producto->imagen:'';?>" required>
+                        <input type="text" class="form-control" id="imagen" name="imagen" placeholder="" value="<?php //echo isset($producto->imagen)?$producto->imagen:'';?>" required>
                     </div>
-                </div>
+                </div> --->
             
                 <div class="form-group">
                     <label for="id_marca" class="col-sm-2 control-label">Marca</label>
@@ -111,7 +111,11 @@ require('inc/header.php');
                         </select>
                     
                 </div>
-
+                <div class="form-group">
+                    <label for="id_marca" class="col-sm-2 control-label">imagen</label>
+                    <input type="file" name="imagen">
+	                <!-- <input type="submit"> -->
+                </div> 
             
         
                 <div class="form-group">
