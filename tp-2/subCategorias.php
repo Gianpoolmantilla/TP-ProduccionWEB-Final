@@ -45,7 +45,8 @@ if(  !in_array('subcategorias',$_SESSION['usuario']['permisos'])){
       //   header('Location: subCategorias.php');
      //   echo '<script>window.location="_admin\categorias.php"';		
 			}
-			echo '<script>alert("'.$resp.'");</script>';
+      echo '<script>alert("'.$resp.'");</script>';
+      echo "<script>document.location.href='subCategorias.php';</script>\n"; 
 
     }
     

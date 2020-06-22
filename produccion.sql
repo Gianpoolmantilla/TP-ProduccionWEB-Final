@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2020 a las 00:42:05
+-- Tiempo de generación: 23-06-2020 a las 01:01:03
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -52,7 +52,9 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
 (12, 'Celulares Libres', 3),
 (13, 'Tablets', 3),
 (14, 'Multimedia', 2),
-(15, 'Accesorios-TV', 2);
+(15, 'Accesorios-TV', 2),
+(41, 'Otra categoria', 0),
+(42, 'otra subcategoria', 41);
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,9 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `mail`, `telefono`, `mensaje`, `estado`, `fechalta`, `id_producto`) VALUES
-(2, 'snoopi', 'xxx@gmail.com', '00011112222', 'me gusta', 200, '2020-06-21 15:44:49', 4);
+(2, 'snoopi', 'xxx@gmail.com', '00011112222', 'me gusta', 200, '2020-06-21 15:44:49', 4),
+(4, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:18:23', 1),
+(5, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 100, '2020-06-22 19:19:10', 1);
 
 -- --------------------------------------------------------
 
@@ -189,7 +193,8 @@ INSERT INTO `marcas` (`id_marca`, `descripcion`) VALUES
 (11, 'Noganet'),
 (12, 'Motorola'),
 (13, 'Xiaomi'),
-(14, 'Thonet Vander');
+(14, 'Thonet Vander'),
+(18, 'otra marca');
 
 -- --------------------------------------------------------
 
@@ -279,13 +284,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
@@ -297,13 +302,13 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Restricciones para tablas volcadas

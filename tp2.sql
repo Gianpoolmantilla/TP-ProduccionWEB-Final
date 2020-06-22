@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2020 a las 00:44:12
+-- Tiempo de generación: 23-06-2020 a las 01:00:52
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -114,7 +114,8 @@ INSERT INTO `perfil` (`id`, `nombre`) VALUES
 (1, 'Administrador'),
 (2, 'Ventas'),
 (3, 'Marketing'),
-(12, 'Sistem');
+(12, 'Sistem'),
+(13, 'Nuevo perfil');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,9 @@ INSERT INTO `perfil_permisos` (`id`, `perfil_id`, `permiso_id`) VALUES
 (65, 3, 1),
 (66, 3, 4),
 (67, 12, 5),
-(68, 12, 6);
+(68, 12, 6),
+(71, 13, 1),
+(72, 13, 4);
 
 -- --------------------------------------------------------
 
@@ -238,8 +241,9 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, 
 (20, 'adrian', 'balquinta', 'adrian.balquinta', 'd0e1c75ebb04e671cd5d0d224a570e90', 'adrian@gmail.com', 0, 1, '5eed717ba1e55'),
 (21, 'juan', 'perez', 'juan.perez', '0d2846c41a4cdc8bbd704042f4a1f9e0', '', 0, 0, '5eedb9b04f111'),
 (22, 'juan', 'perez', 'juan.perez', '6d16c598a274ba27fd491d94b578dbc5', 'adrian@gmail.com', 0, 1, '5eedb9ddf3af2'),
-(27, 'a', 'a', 'a', '5818b774bcb59491ed4d7e9d5adfbc80', 'adrian@gmail.com', 0, 1, '5eefc53f7300c'),
-(28, 'Sistem', 'sistem', 'sistem', 'caa386aecd176190d94d49e529a6e063', 'sistem@gmail', 0, 1, '5eefd1c25ddfd');
+(27, 'a2', 'a2', 'a2', '5818b774bcb59491ed4d7e9d5adfbc80', 'adrian@gmail.com', 0, 0, '5eefc53f7300c'),
+(28, 'Sistem', 'sistem', 'sistem', 'caa386aecd176190d94d49e529a6e063', 'sistem@gmail', 0, 1, '5eefd1c25ddfd'),
+(29, 'pepe', 'perez', 'pepe.perez', 'f0c99ce3d1600abcff606f2af6c0c115', 'pepe@gmail.com', 0, 1, '5ef130ffbb935');
 
 -- --------------------------------------------------------
 
@@ -264,8 +268,9 @@ INSERT INTO `usuarios_perfiles` (`id`, `usuario_id`, `perfil_id`) VALUES
 (29, 20, 2),
 (32, 26, 1),
 (34, 22, 3),
-(36, 27, 1),
-(38, 28, 12);
+(38, 28, 12),
+(39, 27, 3),
+(40, 29, 13);
 
 -- --------------------------------------------------------
 
@@ -377,13 +382,13 @@ ALTER TABLE `usuarios_tipos`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil_permisos`
 --
 ALTER TABLE `perfil_permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -401,13 +406,13 @@ ALTER TABLE `permisos2`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_tipos`

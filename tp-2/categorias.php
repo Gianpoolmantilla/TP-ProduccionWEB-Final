@@ -35,7 +35,9 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
           header('Location: categorias.php');
           // echo '<script>window.location="_admin\categorias.php"';	
         }
+       // header('Location: categorias.php');
         echo '<script>alert("'.$resp.'");</script>';
+        echo "<script>document.location.href='categorias.php';</script>\n"; 
 
 }
     
@@ -46,8 +48,9 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
       	header('Location: categorias.php');	
       // echo '<script>window.location="_admin\categorias.php"';
 			}
-			echo '<script>alert("'.$resp.'");</script>';
-
+      echo '<script>alert("'.$resp.'");</script>';
+      //header('Location: categorias.php');
+      
     }
     
 
