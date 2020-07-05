@@ -28,7 +28,7 @@
             <div class="col-xl-3 col-lg-4 col-md-5">
 <!-- ================ incluyo el menu laterial de categorias ================= -->
                 <?php
-                require_once('left_category.php');
+                
                 include_once('class/classProduct.php');
                
                 $producto= new sqlProducto($con);
@@ -60,8 +60,9 @@
                 
                 
 <!-- ================ fin de incluyo el menu laterial de categorias ================= -->
-                <?php
+                <?php                
                 require_once('left_marcas.php');
+                require_once('left_category.php');
                 ?>
 
             </div>

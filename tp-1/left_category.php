@@ -23,12 +23,20 @@ require_once('class/classCategory.php');
                                                     <h4 class="panel-title">
                                                         <!--llamo a query categoria-->
                                                         <?php
+                                                               if(!empty($id_marca) ){ 
                                                               $categoria =new sqlCategoria($con); 
                                                               foreach($categoria->getCategorias($row['id_categoria']) as $row2){ ?>
                                                         <li> <a
-                                                                href="category.php?categoria=<?php echo $row2['id_categoria']?>"><?php echo $row2['nombre']?></a>
+                                                                href="category.php?marca=<?php echo $id_marca?>&categoria=<?php echo $row2['id_categoria']?>"><?php echo $row2['nombre']?></a>
                                                         </li>
-                                                        <?php }?>
+                                                        <?php }}else{
+                                                            foreach($categoria->getCategorias($row['id_categoria']) as $row2){ ?>
+                                                                <li> <a
+                                                                        href="category.php?categoria=<?php echo $row2['id_categoria']?>"><?php echo $row2['nombre']?></a>
+                                                                </li>
+
+                                                            <?php }
+                                                        }?>
                                                     </h4>
                                                 </div>
                                             </div>

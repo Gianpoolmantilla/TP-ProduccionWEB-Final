@@ -14,11 +14,11 @@ include_once('category.php');
                                    <h4 class="panel-title">
                                    <?php
 
-               if(!empty($id_categoria)){ 
+               if(empty($id_categoria) || !empty($id_categoria)){ 
                  $marca =new sqlMarca($con); 
-                foreach($marca->getMarcadeCat($id_categoria) as $row){ ?>
+                foreach($marca->getMarcas() as $row){ ?>
                 
-                 <li class="filter-list"><a href="category.php?categoria=<?php echo $id_categoria ?>&marca=<?php echo $row['id_marca']?>" ><?php echo $row['descripcion']?><span>(29)</span></a></li><?php }}else{}?>
+                 <li class="filter-list"><a href="category.php?marca=<?php echo $row['id_marca']?>" ><?php echo $row['descripcion']?><span></span></a></li><?php }}else{}?>
                                 </h4>
                             </ul>
                         
