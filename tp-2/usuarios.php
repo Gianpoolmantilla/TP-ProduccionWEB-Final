@@ -33,13 +33,31 @@ require('header.php');
 
 	}
 
-	if(isset($_POST['buscar'])){
+	if(isset($_GET['hab'])){
+		$user->habilitar($_GET['hab']) ;
+	   
+			header('Location: usuarios.php');	
 	
+	}
+	
+
+	if(isset($_POST['buscar'])){
+		if(!isset($_GET['listDes'])){
+			$xnombre= $_POST['xnombre'];
+		$user->getList($xnombre,1);
+		}else{
 		$xnombre= $_POST['xnombre'];
-		$user->getList($xnombre);
+		$user->getList($xnombre,0);
+		}
 	}else{
-		$xnombre= "";
-		$user->getList($xnombre);
+		if(!isset($_GET['listDes'])){
+			$xnombre= "";
+		$user->getList($xnombre,1);
+		}else{
+			$xnombre= "";
+			$user->getList($xnombre,0);
+		}
+		
 	}
 
         ?>
@@ -68,7 +86,11 @@ require('header.php');
           <h2 class="sub-header">		 
 		  
 				<a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
-		  	
+				<?php if ( !isset($_GET['listDes'])){?>
+					<a href="usuarios.php?listDes"><button type="button" class="btn btn-success" title="Deshabilitados">Deshabilitados</button></a>
+				<?} else {?>
+					<a href="usuarios.php"><button type="button" class="btn btn-success" title="Habilitados">Habilitados</button></a>
+				<?} ?>	
 		  </h2>
 		 
 			  <div class="table-responsive">
@@ -86,8 +108,9 @@ require('header.php');
 					</tr>
 				  </thead>
 				  <tbody>
-					<?php  	 
-						foreach($user->getList($xnombre) as $usuario){?>
+					<?php 
+						if(!isset($_GET['listDes'])){ 	 
+						foreach($user->getList($xnombre,1) as $usuario){?>
 				  
 							<tr>
 							  <td><?php echo $usuario['id_usuario'];?></td>
@@ -100,13 +123,38 @@ require('header.php');
 							  <td>
 								  
 										<a href="usuarios_ae.php?edit=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-								  
-								   
+									<? if(isset($usuario['activo']) && $usuario['activo']==1 ){?>
+										
 										<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
-								
+									<? } else {?>
+										<a href="usuarios.php?hab=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>	
+									<? } ?>
 							  </td>
 							</tr>
-						<?php }?>                
+							<?php }} else {
+								foreach($user->getList($xnombre,0) as $usuario){?>
+				  
+									<tr>
+									  <td><?php echo $usuario['id_usuario'];?></td>
+									  <td><?php echo $usuario['nombre'];?></td>
+									  <td><?php echo $usuario['apellido'];?></td>
+									  <td><?php echo $usuario['usuario'];?></td>
+									  <td><?php echo $usuario['email'];?></td>
+									  <td><?php echo isset($usuario['perfiles'])?implode(', ',$usuario['perfiles']):'No tiene perfiles asignados';?></td>
+									  <td><?php echo ($usuario['activo'])?'si':'no';?></td>
+									  <td>
+										  
+												<a href="usuarios_ae.php?edit=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+											<? if(isset($usuario['activo']) && $usuario['activo']==1 ){?>
+												
+												<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+											<? } else {?>
+												<a href="usuarios.php?hab=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>	
+											<? } ?>
+									  </td>
+									</tr>
+							<?php }}	 ?>  		
+
 				  </tbody>
 				</table>
 			  </div>

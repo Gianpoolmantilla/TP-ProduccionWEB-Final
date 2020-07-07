@@ -10,11 +10,6 @@ include('clases/AbmCategorias.php');
 include('funcs.php');
 
 
-$hostname = '127.0.0.1';
-$database = 'tp2';
-$username = 'root';
-$password = '';
-$port= 3306;
 
 try {
         $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
@@ -74,7 +69,7 @@ if($user->notLogged()){
   }
   function ConfirmDelete()
   {
-    var respuesta =confirm("¿Estas seguro que desea eliminar?");
+    var respuesta =confirm("¿Estas seguro que desea deshabilitar?");
     if(respuesta == true){
         return true;
     }else{

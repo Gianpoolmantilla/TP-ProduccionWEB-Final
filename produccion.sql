@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2020 a las 01:01:03
+-- Tiempo de generación: 07-07-2020 a las 08:45:52
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -30,31 +30,32 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nombre` varchar(250) NOT NULL,
-  `id_padre` int(11) NOT NULL DEFAULT 0
+  `id_padre` int(11) NOT NULL DEFAULT 0,
+  `deshabilitado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
-(1, 'Informática', 0),
-(2, 'Televisores y video', 0),
-(3, 'Celulares y tablets', 0),
-(4, 'Audio', 0),
-(5, 'Placa de video', 1),
-(6, 'Motherboards', 1),
-(7, 'Procesadores', 1),
-(8, 'Smart TV HD', 2),
-(9, 'Parlantes', 4),
-(10, 'Auriculares', 4),
-(11, 'Home theatre', 4),
-(12, 'Celulares Libres', 3),
-(13, 'Tablets', 3),
-(14, 'Multimedia', 2),
-(15, 'Accesorios-TV', 2),
-(41, 'Otra categoria', 0),
-(42, 'otra subcategoria', 41);
+INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`, `deshabilitado`) VALUES
+(1, 'Informática', 0, 0),
+(2, 'Televisores y video', 0, 0),
+(3, 'Celulares y tablets', 0, 0),
+(4, 'Audio', 0, 0),
+(5, 'Placa de video', 1, 0),
+(6, 'Motherboards', 1, 0),
+(7, 'Procesadores', 1, 0),
+(8, 'Smart TV HD', 2, 0),
+(9, 'Parlantes', 4, 0),
+(10, 'Auriculares', 4, 0),
+(11, 'Home theatre', 4, 0),
+(12, 'Celulares Libres', 3, 0),
+(13, 'Tablets', 3, 0),
+(14, 'Multimedia', 2, 0),
+(15, 'Accesorios-TV', 2, 0),
+(41, 'Otra categoria', 0, 0),
+(42, 'otra subcategoria', 41, 0);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `mail`, `telefono`, `mensaje`, `estado`, `fechalta`, `id_producto`) VALUES
 (2, 'snoopi', 'xxx@gmail.com', '00011112222', 'me gusta', 200, '2020-06-21 15:44:49', 4),
 (4, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:18:23', 1),
-(5, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 100, '2020-06-22 19:19:10', 1);
+(5, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:19:10', 1);
 
 -- --------------------------------------------------------
 
@@ -172,29 +173,31 @@ INSERT INTO `contactos` (`id_contacto`, `nombre`, `email`, `area`, `comentario`,
 
 CREATE TABLE `marcas` (
   `id_marca` int(11) NOT NULL,
-  `descripcion` varchar(100) DEFAULT NULL
+  `descripcion` varchar(100) DEFAULT NULL,
+  `deshabilitado` char(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `marcas`
 --
 
-INSERT INTO `marcas` (`id_marca`, `descripcion`) VALUES
-(1, 'Samsung'),
-(2, 'apple'),
-(3, 'MSI'),
-(4, 'Asus'),
-(5, 'Zotac'),
-(6, 'Asrock'),
-(7, 'Gigabyte'),
-(8, 'AMD'),
-(9, 'lg'),
-(10, 'Hisense'),
-(11, 'Noganet'),
-(12, 'Motorola'),
-(13, 'Xiaomi'),
-(14, 'Thonet Vander'),
-(18, 'otra marca');
+INSERT INTO `marcas` (`id_marca`, `descripcion`, `deshabilitado`) VALUES
+(1, 'Samsung', '1'),
+(2, 'apple', '1'),
+(3, 'MSI', '1'),
+(4, 'Asus', '1'),
+(5, 'Zotac', '1'),
+(6, 'Asrock', '1'),
+(7, 'Gigabyte', '1'),
+(8, 'AMD', '1'),
+(9, 'lg', '1'),
+(10, 'Hisense', '1'),
+(11, 'Noganet', '1'),
+(12, 'Motorola', '1'),
+(13, 'Xiaomi', '1'),
+(14, 'Thonet Vander', '1'),
+(18, 'otra marca', '0'),
+(19, 'otra marca 2', '0');
 
 -- --------------------------------------------------------
 
@@ -210,14 +213,14 @@ CREATE TABLE `productos` (
   `id_marca` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `precio` varchar(100) DEFAULT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0
+  `deshabilitado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_marca`, `id_categoria`, `precio`, `deleted`) VALUES
+INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_marca`, `id_categoria`, `precio`, `deshabilitado`) VALUES
 (1, 'iphone 8 plus', 'Mayor rendimiento,Su memoria RAM de 3 GB te permitirá ejecutar varias aplicaciones al mismo tiempo', 'iPhone8.PNG', 2, 12, '35.000', 0),
 (2, 'Apple iPad Pro 12,9', 'Pantalla Retina Líquida Multi-Touch de 12.9\' Resolución de pantalla de 2732 x 2048 (264 ppi) Coprocesador SoC + M12 de Apple A12X de 64 bits Wi-Fi 5 (802.11ac), BT 5.0', 'iPadPro.PNG', 2, 13, '75.000', 0),
 (3, 'homepod', 'Este altavoz diseñado a propósito crea un sonido rico y matizado que desafía su tamaño.', 'homePod.PNG', 2, 9, '43.000', 0),
@@ -238,7 +241,9 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `imagen`, `id_m
 (18, 'Home Theater 2.1 Noga', 'SISTEMA DE PARLANTES 2.1 MULTIMEDIA NOGA C/ REMOTO S2176R', 'homeTheareNoga.PNG', 11, 11, '5.400', 0),
 (19, 'Home Theater Thonet Vander', 'Todo en audio y sonido, lo mejor lo encontrás en Thonet. Comprá online a menor precio! Promo en Productos Seleccionados. Comprobá los precios del Audio Sale de Thonet.', 'HomeThonV.PNG', 14, 11, '11.250', 0),
 (20, 'Celular Samsung Galaxy A9', 'Celular Samsung Galaxy A9', 'SamsungCel.PNG', 1, 12, '12.500', 0),
-(21, 'Celular Samsung Galaxy A8', 'Celular Samsung Galaxy A8', 'SamsungCel.PNG', 1, 12, '15.000', 0);
+(21, 'Celular Samsung Galaxy A8', 'Celular Samsung Galaxy A8', 'SamsungCel.PNG', 1, 12, '15.000', 0),
+(49, 'prueba', 'producto prueba', 'bart.png', 1, 5, '100.00', 0),
+(50, 'otro producto', 'probando otro producto', NULL, 12, 42, '100.99', 1);
 
 --
 -- Índices para tablas volcadas
@@ -302,13 +307,13 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Restricciones para tablas volcadas

@@ -11,9 +11,9 @@ Class Usuario{
         /**
         * Obtengo todos los usuarios
         */
-	public function getList($Xnombre){
+	public function getList($Xnombre,$activo){
 		$query = "SELECT id_usuario,nombre,apellido,email,usuario,clave,activo 
-		           FROM usuarios WHERE activo = 1 AND nombre like '%".$Xnombre."%'";
+		           FROM usuarios WHERE activo = ".$activo." AND nombre like '%".$Xnombre."%'";
 		$resultado = array();
 		foreach($this->con->query($query) as $key=>$usuario){
 			$resultado[$key] = $usuario;
@@ -162,7 +162,22 @@ Class Usuario{
 			
 
             $this->con->exec($sql);
-        }
+		}
+		
+
+
+
+		
+	public function habilitar($id){
+	
+		
+		$query = "UPDATE  usuarios SET activo = 1 WHERE id_usuario = ".$id.';';
+				 
+
+		return $this->con->exec($query); 
+
+	
+}
 		
 	
 	/**

@@ -9,16 +9,49 @@ Class Categoria{
 	}
 
 	public function getList(){
-		$query = "SELECT id_categoria, nombre, id_padre 
+		$query = "SELECT id_categoria, nombre, id_padre, deshabilitado  
                    FROM categ 
-                   WHERE id_padre = 0";
+                   WHERE id_padre = 0 and deshabilitado = 0";
         return $this->con->query($query); 
 	}
 
+	public function getListDes(){
+		$query = "SELECT id_categoria, nombre, id_padre, deshabilitado 
+		           FROM categ 
+				   WHERE id_padre = 0 and deshabilitado = 1";
+        return $this->con->query($query); 
+	}
+/*
 	public function getListSubCategoria(){
-		$query = "SELECT id_categoria, nombre 
+		$query = "SELECT id_categoria, nombre, deshabilitado
                    FROM categ 
-                   WHERE id_padre > 0";
+                   WHERE id_padre > 0 and deshabilitado = 0";
+        return $this->con->query($query); 
+	}*/
+		public function getListSubCategoria(){
+		$query = "SELECT subcat.id_categoria, subcat.nombre, subcat.deshabilitado
+		FROM categ subcat
+		INNER join categ catpadre
+		on subcat.id_padre=catpadre.id_categoria
+		WHERE subcat.id_padre > 0 
+		and catpadre.deshabilitado = 0
+		and subcat.deshabilitado = 0";
+        return $this->con->query($query); 
+	}
+	/*
+	SELECT subcat.id_categoria, subcat.nombre, subcat.deshabilitado
+FROM categorias subcat
+INNER join categorias catpadre
+on subcat.id_padre=catpadre.id_categoria
+WHERE subcat.id_padre > 0 
+and catpadre.deshabilitado = 0
+and subcat.deshabilitado = 0
+*/
+
+	public function getListSubCategoriaDes(){
+		$query = "SELECT id_categoria, nombre, deshabilitado
+                   FROM categ 
+                   WHERE id_padre > 0 and deshabilitado = 1";
         return $this->con->query($query); 
 	}
 
@@ -69,6 +102,29 @@ Class Categoria{
 		return 'Sub-categoria asignada a un producto';
 	}
 	
+	public function deshabilitar($id){
+		
+			
+			$query = "UPDATE  categ SET deshabilitado = 1 WHERE id_categoria =".$id; 
+					
+
+			return $this->con->exec($query); 
+
+		
+	}
+
+	public function habilitar($id){
+
+		
+		$query = "UPDATE  categ SET deshabilitado = 0 WHERE id_categoria =".$id; 
+				
+
+		return $this->con->exec($query); 
+
+
+	}
+
+
 	/**
 	* Guardo los datos en la base de datos
 	*/

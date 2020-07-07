@@ -30,18 +30,13 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
     	
     
     if(isset($_GET['delpadre'])){
-        $resp = $categorias->delCategoriaPadre($_GET['delpadre']) 	;
-        if($resp == 1){
-          header('Location: categorias.php');
-          // echo '<script>window.location="_admin\categorias.php"';	
-        }
-       // header('Location: categorias.php');
-        echo '<script>alert("'.$resp.'");</script>';
-        echo "<script>document.location.href='categorias.php';</script>\n"; 
-
+      
+      $categorias->deshabilitar($_GET['delpadre']) ;
+     
+      header('Location: categorias.php');	
 }
     
-    
+    /*
 	if(isset($_GET['del'])){
 			$resp = $categorias->del($_GET['del']) 	;
             if($resp == 1){
@@ -51,9 +46,16 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
       echo '<script>alert("'.$resp.'");</script>';
       //header('Location: categorias.php');
       
-    }
+    }*/
     
-
+   
+ 
+ if(isset($_GET['hab'])){
+  $categorias->habilitar($_GET['hab']) ;
+    
+     header('Location: categorias.php');	
+ 
+ }
 	
 
         ?>
@@ -72,30 +74,58 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
           </h1>
  
 
-          <h2 class="sub-header"></h2>
+          <h2 class="sub-header">
           <a href="categorias_ae.php?id_padre=0"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
+          <?php if ( !isset($_GET['listDes'])){?>
+		  <a href="categorias.php?listDes=1"><button type="button" class="btn btn-success" title="Agregar">Deshabilitados</button></a>
+		  <?} else {?>
+		<a href="categorias.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
+		  <?} ?>
+		  </h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nombre</th> 
+                  <th>Nombre</th>
+                  <th>Deshabilitado</th>  
 				          <th>Acciones</th>
                 </tr>
               </thead>
 			  <tbody>
-				<?php  	 
-					foreach($categorias->getList() as $categoria){?>
+        <?php
+          if(!isset($_GET['listDes'])){  	 
+					    foreach($categorias->getList() as $categoria){?>
               
 						<tr>
 						  <td><?php echo $categoria['id_categoria'];?></td>
-						  <td><?php echo $categoria['nombre'];?></td> 
+						  <td><?php echo $categoria['nombre'];?></td>
+              <td><?php echo ($categoria['deshabilitado'])?'si':'no';?></td>  
 						  <td>
-						      <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
-					      </td>
+						    <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <? if(isset($categoria['deshabilitado']) && $categoria['deshabilitado']==0 ){?>
+                <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+                <? } else {?>
+                  <a href="categorias.php?hab=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <? } ?>  
+                </td>
 						</tr>
-				    <?php }?>                
+            <?php }} else {
+              foreach($categorias->getListDes() as $categoria){?>
+              	<tr>
+						  <td><?php echo $categoria['id_categoria'];?></td>
+						  <td><?php echo $categoria['nombre'];?></td>
+              <td><?php echo ($categoria['deshabilitado'])?'si':'no';?></td>  
+						  <td>
+						    <a href="categorias_ae.php?edit=<?php echo   $categoria['id_categoria']?>&id_padre=<?php echo $categoria['id_padre']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+							  <? if(isset($categoria['deshabilitado']) && $categoria['deshabilitado']==0 ){?>
+                <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" ><i class="far fa-trash-alt"></i></button></a>
+                <? } else {?>
+                  <a href="categorias.php?hab=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <? } ?>  
+                </td>
+						</tr>
+            <?php }}	 ?> 
               </tbody>
             </table>
           </div>

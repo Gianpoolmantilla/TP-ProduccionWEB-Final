@@ -29,6 +29,8 @@ function redirect($pURL)
 */
 				  
 function redimensionar($ruta,$file_name,$uploadedfile,$id,$tamanhos){
+
+	
 	$filename = stripslashes($file_name);
  	$extension = getExtension($filename);
  	$extension = strtolower($extension);
@@ -108,7 +110,10 @@ function redimensionar($ruta,$file_name,$uploadedfile,$id,$tamanhos){
  //Funcion para borrar imagenes
 function eliminar_archivos($carpeta,$id)
 {
-	$dir = 'C:/xampp/htdocs/TP-ProduccionWEB/tp-1/'.$carpeta.'/';
+	$r = $_SERVER['SCRIPT_FILENAME'];
+	$ruta = dirname($r,3) ;
+	$ruta.="/tp-1/img/product/";
+	$dir = $ruta.$carpeta.'/';
 	
 	if(is_dir($dir)){
 		$directorio=opendir($dir);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2020 a las 01:00:52
+-- Tiempo de generación: 07-07-2020 a las 08:46:37
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -25,33 +25,69 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_mc` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_subcat` VARCHAR(100))  SELECT 
-      p.id_producto id_producto , 
-      p.nombre nombre,
-	  p.precio precio,
-      p.descripcion descripcion,
-      m.id_marca id_marca,
-      m.descripcion descmarca,      
-      cat.id_categoria id_categoria,
-      cat.nombre descrpcategoria,
-      Subcat.id_categoria id_subcategoria,
-      Subcat.nombre descrpSubcategoria 
-FROM 
-     prod p 
-INNER JOIN 
-     categ Subcat ON Subcat.id_categoria = p.id_categoria 
-LEFT JOIN 
-     categ cat ON  cat.id_categoria = Subcat.id_padre
-INNER JOIN 
-      marc m on m.id_marca = p.id_marca 
-WHERE 
-      p.nombre LIKE CONCAT('%', _nom , '%')
-AND
-     m.id_marca = (CASE WHEN _mc = '' THEN m.id_marca else _mc END )
-AND
-    cat.id_categoria = (CASE WHEN _cat = '' THEN cat.id_categoria else _cat END )
-AND
-    Subcat.id_categoria =(CASE WHEN _subcat = '' THEN Subcat.id_categoria else  _subcat END )$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros` (IN `_nom` VARCHAR(100), IN `_mc` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_subcat` VARCHAR(100), IN `_desh` BOOLEAN)  SELECT 
+		  p.id_producto id_producto , 
+		  p.nombre nombre,
+		  p.precio precio,
+		  p.descripcion descripcion,
+		  p.deshabilitado deshabilitado,
+		  m.id_marca id_marca,
+		  m.descripcion descmarca,      
+		  cat.id_categoria id_categoria,
+		  cat.nombre descrpcategoria,
+		  Subcat.id_categoria id_subcategoria,
+		  Subcat.nombre descrpSubcategoria
+		  
+	FROM 
+		 prod p 
+	INNER JOIN 
+		 categ Subcat ON Subcat.id_categoria = p.id_categoria 
+	LEFT JOIN 
+		 categ cat ON  cat.id_categoria = Subcat.id_padre
+	INNER JOIN 
+		  marc m on m.id_marca = p.id_marca 
+	WHERE 
+		  p.nombre LIKE CONCAT('%', _nom , '%')
+	AND
+		 m.id_marca = (CASE WHEN _mc = '' THEN m.id_marca else _mc END )
+	AND
+		cat.id_categoria = (CASE WHEN _cat = '' THEN cat.id_categoria else _cat END )
+	AND
+		Subcat.id_categoria =(CASE WHEN _subcat = '' THEN Subcat.id_categoria else  _subcat END )
+	AND
+		p.deshabilitado = _desh$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Busquedaproductofiltros2` (IN `_nom` VARCHAR(100), IN `_mc` VARCHAR(100), IN `_cat` VARCHAR(100), IN `_subcat` VARCHAR(100), IN `_desh` BOOLEAN)  SELECT 
+		  p.id_producto id_producto , 
+		  p.nombre nombre,
+		  p.precio precio,
+		  p.descripcion descripcion,
+		  p.deshabilitado deshabilitado,
+		  m.id_marca id_marca,
+		  m.descripcion descmarca,      
+		  cat.id_categoria id_categoria,
+		  cat.nombre descrpcategoria,
+		  Subcat.id_categoria id_subcategoria,
+		  Subcat.nombre descrpSubcategoria
+		  
+	FROM 
+		 prod p 
+	INNER JOIN 
+		 categ Subcat ON Subcat.id_categoria = p.id_categoria 
+	LEFT JOIN 
+		 categ cat ON  cat.id_categoria = Subcat.id_padre
+	INNER JOIN 
+		  marc m on m.id_marca = p.id_marca 
+	WHERE 
+		  p.nombre LIKE CONCAT('%', _nom , '%')
+	AND
+		 m.id_marca = (CASE WHEN _mc = '' THEN m.id_marca else _mc END )
+	AND
+		cat.id_categoria = (CASE WHEN _cat = '' THEN cat.id_categoria else _cat END )
+	AND
+		Subcat.id_categoria =(CASE WHEN _subcat = '' THEN Subcat.id_categoria else  _subcat END )
+	AND
+		p.deshabilitado = _desh$$
 
 DELIMITER ;
 
@@ -65,6 +101,7 @@ CREATE TABLE `categ` (
 `id_categoria` int(11)
 ,`nombre` varchar(250)
 ,`id_padre` int(11)
+,`deshabilitado` tinyint(1)
 );
 
 -- --------------------------------------------------------
@@ -93,6 +130,7 @@ CREATE TABLE `coment` (
 CREATE TABLE `marc` (
 `id_marca` int(11)
 ,`descripcion` varchar(100)
+,`deshabilitado` char(1)
 );
 
 -- --------------------------------------------------------
@@ -212,6 +250,7 @@ CREATE TABLE `prod` (
 ,`id_marca` int(11)
 ,`id_categoria` int(11)
 ,`precio` varchar(100)
+,`deshabilitado` tinyint(1)
 );
 
 -- --------------------------------------------------------
@@ -270,7 +309,7 @@ INSERT INTO `usuarios_perfiles` (`id`, `usuario_id`, `perfil_id`) VALUES
 (34, 22, 3),
 (38, 28, 12),
 (39, 27, 3),
-(40, 29, 13);
+(41, 29, 13);
 
 -- --------------------------------------------------------
 
@@ -299,7 +338,7 @@ INSERT INTO `usuarios_tipos` (`id_tipo`, `tipo`) VALUES
 --
 DROP TABLE IF EXISTS `categ`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `categ`  AS  select `produccion`.`categorias`.`id_categoria` AS `id_categoria`,`produccion`.`categorias`.`nombre` AS `nombre`,`produccion`.`categorias`.`id_padre` AS `id_padre` from `produccion`.`categorias` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `categ`  AS  select `produccion`.`categorias`.`id_categoria` AS `id_categoria`,`produccion`.`categorias`.`nombre` AS `nombre`,`produccion`.`categorias`.`id_padre` AS `id_padre`,`produccion`.`categorias`.`deshabilitado` AS `deshabilitado` from `produccion`.`categorias` ;
 
 -- --------------------------------------------------------
 
@@ -317,7 +356,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `marc`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `marc`  AS  select `produccion`.`marcas`.`id_marca` AS `id_marca`,`produccion`.`marcas`.`descripcion` AS `descripcion` from `produccion`.`marcas` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `marc`  AS  select `produccion`.`marcas`.`id_marca` AS `id_marca`,`produccion`.`marcas`.`descripcion` AS `descripcion`,`produccion`.`marcas`.`deshabilitado` AS `deshabilitado` from `produccion`.`marcas` ;
 
 -- --------------------------------------------------------
 
@@ -326,7 +365,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `prod`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prod`  AS  select `produccion`.`productos`.`id_producto` AS `id_producto`,`produccion`.`productos`.`nombre` AS `nombre`,`produccion`.`productos`.`descripcion` AS `descripcion`,`produccion`.`productos`.`imagen` AS `imagen`,`produccion`.`productos`.`id_marca` AS `id_marca`,`produccion`.`productos`.`id_categoria` AS `id_categoria`,`produccion`.`productos`.`precio` AS `precio` from `produccion`.`productos` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prod`  AS  select `produccion`.`productos`.`id_producto` AS `id_producto`,`produccion`.`productos`.`nombre` AS `nombre`,`produccion`.`productos`.`descripcion` AS `descripcion`,`produccion`.`productos`.`imagen` AS `imagen`,`produccion`.`productos`.`id_marca` AS `id_marca`,`produccion`.`productos`.`id_categoria` AS `id_categoria`,`produccion`.`productos`.`precio` AS `precio`,`produccion`.`productos`.`deshabilitado` AS `deshabilitado` from `produccion`.`productos` ;
 
 --
 -- Índices para tablas volcadas
@@ -412,7 +451,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_tipos`

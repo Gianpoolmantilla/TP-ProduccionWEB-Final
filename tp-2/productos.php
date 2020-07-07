@@ -19,13 +19,17 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
     if(isset($_POST['formulario_productos'])){ 
 
       if(isset($_FILES['imagen'])){
-        // var_dump($_FILES);
+        
          
          if($_FILES['imagen']['type']=="image/png"){
            $tamanhos = array(0 => array('ancho'=>'263','alto'=>'280'));
             
            $nombre = $_FILES['imagen']['name'];
-           redimensionar('C:/xampp/htdocs/TP-ProduccionWEB/tp-1/img/product/'.$nombre, $_FILES['imagen']['name'],$_FILES['imagen']['tmp_name'],0,$tamanhos);
+           $r = $_SERVER['SCRIPT_FILENAME'];
+           $ruta = dirname($r,2) ;
+           $ruta.="/tp-1/img/product/".$nombre;
+           
+           redimensionar($ruta, $_FILES['imagen']['name'],$_FILES['imagen']['tmp_name'],0,$tamanhos);
            $_POST['imagen']= $nombre;
            
           // var_dump($_POST); 
@@ -43,7 +47,7 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
 		
 		 header('Location: productos.php');
 	}	
-	 
+	 /*
 	if(isset($_GET['del'])){
     $p=$prod->get($_GET['del']);
     if(isset($p->imagen)){
@@ -54,7 +58,25 @@ if(  !in_array('productos',$_SESSION['usuario']['permisos'])){
     
      header('Location: productos.php');
 
+  }*/
+
+
+  if(isset($_GET['del'])){
+    $prod->deshabilitar($_GET['del']) ;
+   
+    header('Location: productos.php');
+	
+ 
   }
+
+  if(isset($_GET['hab'])){
+    $prod->habilitar($_GET['hab']) ;
+    
+  header('Location: productos.php');
+
+
+  }
+
   $marcas = new Marca($con);
   $categorias = new Categoria ($con);
 
@@ -68,14 +90,14 @@ if(isset($_POST['buscar'])){
   $xcategorias = $_POST['xcategorias'];
   $xsubcategoria = $_POST['xsubcategorias'];
 
-  $prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
+  //$prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
   
 }	else{
   $xnombre = ""; 
   $xmarcas= ""; 
   $xcategorias = "";
   $xsubcategoria ="";                               
-  $prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
+ // $prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria);
 }
 /////////////////////////////////////////////////////////////
 
@@ -158,7 +180,13 @@ if(isset($_POST['buscar'])){
 			  </form>
  
 
-          <h2 class="sub-header"><a href="productos_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a></h2>
+          <h2 class="sub-header"><a href="productos_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
+          <?php if ( !isset($_GET['listDes'])){?>
+            <a href="productos.php?listDes"><button type="button" class="btn btn-success" title="Agregar">Deshabilitados</button></a>
+            <?} else {?>
+            <a href="productos.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
+            <?} ?>
+          </h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -169,33 +197,60 @@ if(isset($_POST['buscar'])){
                   <th>Precio</th>                 
                   <th>Marca</th>
                   <th>Categoria</th>
-                  <th>SubCategoria</th>                  
+                  <th>SubCategoria</th>
+                  <th>Deshabilitado</th>                  
 				          <th>Acciones</th>
                 </tr>
               </thead>
 			  <tbody> 
               <?php        
                                                
-             
-					foreach($prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria) as $producto2){ ?>
+          if(!isset($_GET['listDes'])){   
+					foreach($prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria,0) as $producto2){ ?>
               
 						<tr>
 						  <td><?php echo $producto2['id_producto'];?></td>
 						  <td><?php echo $producto2['nombre'];?></td> 
-						  <td><?php echo $producto2['descripcion'];?></td>
+						  <td><?php echo cortar_palabras($producto2['descripcion'],55);?></td>
               <td><?php echo $producto2['precio'];?></td>
               <td><?php echo $producto2['descmarca'];?></td>
               <td><?php echo $producto2['descrpcategoria'];?></td>
               <td><?php echo $producto2['descrpSubcategoria'];?></td>
+              <td><?php echo ($producto2['deshabilitado'])?'si':'no';?></td>
            
               
 						  <td>
 						      <a href="productos_ae.php?edit=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							    <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
-					    </td>
+              <? if(isset($producto2['deshabilitado']) && $producto2['deshabilitado']==0 ){?>   
+                  <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+              <? } else {?>
+                <a href="productos.php?hab=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <? } ?>
+              </td>
 						</tr>
-				    <?php }?>  
-						
+				    <?php }} else {
+                foreach($prod->filtrosProductos($xnombre,$xmarcas,$xcategorias,$xsubcategoria,1) as $producto2){ ?>
+                <tr>
+						  <td><?php echo $producto2['id_producto'];?></td>
+						  <td><?php echo $producto2['nombre'];?></td> 
+						  <td><?php echo cortar_palabras($producto2['descripcion'],55);?></td>
+              <td><?php echo $producto2['precio'];?></td>
+              <td><?php echo $producto2['descmarca'];?></td>
+              <td><?php echo $producto2['descrpcategoria'];?></td>
+              <td><?php echo $producto2['descrpSubcategoria'];?></td>
+              <td><?php echo ($producto2['deshabilitado'])?'si':'no';?></td>
+           
+              
+						  <td>
+						      <a href="productos_ae.php?edit=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
+              <? if(isset($producto2['deshabilitado']) && $producto2['deshabilitado']==0 ){?>   
+                  <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
+              <? } else {?>
+                <a href="productos.php?hab=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <? } ?>
+              </td>
+						</tr>
+            <?php }}	 ?>
               </tbody>
             </table>
           </div>

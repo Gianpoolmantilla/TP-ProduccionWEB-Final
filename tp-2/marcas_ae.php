@@ -41,12 +41,17 @@ if(  !in_array('marcas',$_SESSION['usuario']['permisos'])){
   
           <div class="col-md-2"></div>
             <form action="marcas.php" method="post" class="col-md-6 from-horizontal">
+               
                 <div class="form-group">
                     <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="nombre" name="descripcion" placeholder="" value="<?php echo (isset($marca->descripcion)?$marca->descripcion:'');?>" required>
                     </div>
                 </div> 
+                <br>
+          
+
+                
                  
                
                  

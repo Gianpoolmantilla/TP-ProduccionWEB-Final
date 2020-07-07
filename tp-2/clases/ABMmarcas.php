@@ -9,13 +9,20 @@ Class Marca{
 	}
 
 	public function getList(){
-		$query = "SELECT id_marca, descripcion 
-		           FROM marc";
+		$query = "SELECT id_marca, descripcion, deshabilitado 
+		           FROM marc Where deshabilitado = 1";
+        return $this->con->query($query); 
+	}
+
+	public function getListDes(){
+		$query = "SELECT id_marca, descripcion, deshabilitado 
+		           FROM marc Where deshabilitado = 0";
         return $this->con->query($query); 
 	}
 	
+	
 	public function get($id){
-	    $query = "SELECT id_marca, descripcion 
+	    $query = "SELECT id_marca, descripcion ,deshabilitado
 					FROM marc 
                    where id_marca = ".$id;
         $query = $this->con->query($query); 
@@ -36,6 +43,37 @@ Class Marca{
 		}
 		return 'Marca asignada a un producto';
 	}
+
+
+	
+	public function deshabilitar($id){
+	
+		
+			$query = "UPDATE  marc SET deshabilitado = 0 WHERE id_marca =".$id; 
+					 
+
+			return $this->con->exec($query); 
+	
+		
+	}
+
+	public function habilitar($id){
+	
+		
+		$query = "UPDATE  marc SET deshabilitado = 1 WHERE id_marca =".$id; 
+				 
+
+		return $this->con->exec($query); 
+
+	
+}
+
+	
+
+
+
+
+
 	
 	/**
 	* Guardo los datos en la base de datos
