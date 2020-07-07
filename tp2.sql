@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2020 a las 08:46:37
+-- Tiempo de generación: 08-07-2020 a las 00:39:20
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;

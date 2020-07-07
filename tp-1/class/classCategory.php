@@ -10,7 +10,7 @@ class sqlCategoria{
     }
 
     function getCategorias($idPadre = 0){
-        $sql = "SELECT * FROM categorias WHERE id_padre = ".$idPadre;
+        $sql = "SELECT * FROM categorias WHERE deshabilitado = 0 AND  id_padre = ".$idPadre;
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 

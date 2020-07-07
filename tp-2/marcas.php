@@ -69,7 +69,7 @@ if(isset($_GET['hab'])){
 
           <h2 class="sub-header"><a href="marcas_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
 		  <?php if ( !isset($_GET['listDes'])){?>
-		  <a href="marcas.php?listDes=1"><button type="button" class="btn btn-success" title="Deshabilitados">Deshabilitados</button></a>
+		  <a href="marcas.php?listDes=1"><button type="button" class="btn btn-secondary" title="Deshabilitados">Deshabilitados</button></a>
 		  <?} else {?>
 		<a href="marcas.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
 		  <?} ?>
@@ -95,7 +95,7 @@ if(isset($_GET['hab'])){
 						  <td><?php echo ($marca['deshabilitado'])?'si':'no';?></td> 
 						  <td>
 						      <a href="marcas_ae.php?edit=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-							  <? if(isset($marca['deshabilitado']) && $marca['deshabilitado']==1 ){?>
+							  <? if(isset($marca['deshabilitado']) && $marca['deshabilitado']==0 ){?>
 								<a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 							 <? } else {?>
 								<a href="marcas.php?hab=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
@@ -115,10 +115,10 @@ foreach($marcas->getListDes() as $marca){?>
 	  <td><?php echo ($marca['deshabilitado'])?'si':'no';?></td> 
 	  <td>
 		  <a href="marcas_ae.php?edit=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-info" title="Modificar"><i class="far fa-edit"></i></i></button></a>
-		  <? if(isset($marca['deshabilitado']) && $marca['deshabilitado']==1 ){?>
+		  <? if(isset($marca['deshabilitado']) && $marca['deshabilitado']==0){?>
 			<a href="marcas.php?del=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 		 <? } else {?>
-			<a href="marcas.php?hab=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+			<a href="marcas.php?hab=<?php echo  $marca['id_marca']?>"><button type="button" class="btn btn-success" title="habilitar" ><i class="far fa-check-circle"></i></button></a>
 
 		 <? } ?>
 		  

@@ -182,7 +182,7 @@ if(isset($_POST['buscar'])){
 
           <h2 class="sub-header"><a href="productos_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <?php if ( !isset($_GET['listDes'])){?>
-            <a href="productos.php?listDes"><button type="button" class="btn btn-success" title="Agregar">Deshabilitados</button></a>
+            <a href="productos.php?listDes"><button type="button" class="btn btn-secondary" title="Agregar">Deshabilitados</button></a>
             <?} else {?>
             <a href="productos.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
             <?} ?>
@@ -246,7 +246,7 @@ if(isset($_POST['buscar'])){
               <? if(isset($producto2['deshabilitado']) && $producto2['deshabilitado']==0 ){?>   
                   <a href="productos.php?del=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
               <? } else {?>
-                <a href="productos.php?hab=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <a href="productos.php?hab=<?php echo $producto2['id_producto']?>"><button type="button" class="btn btn-success" title="habilitar" ><i class="far fa-check-circle"></i></button></a>
                 <? } ?>
               </td>
 						</tr>

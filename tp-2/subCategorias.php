@@ -86,7 +86,7 @@ if(isset($_GET['del'])){
           <h2 class="sub-header">
           <a href="subCategorias_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <?php if ( !isset($_GET['listDes'])){?>
-		  <a href="subCategorias.php?listDes"><button type="button" class="btn btn-success" title="Agregar">Deshabilitados</button></a>
+		  <a href="subCategorias.php?listDes"><button type="button" class="btn btn-secondary" title="Agregar">Deshabilitados</button></a>
 		  <?} else {?>
 		<a href="subCategorias.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
 		  <?} ?>
@@ -131,7 +131,7 @@ if(isset($_GET['del'])){
 							  <? if(isset($subCategoria['deshabilitado']) && $subCategoria['deshabilitado']==0 ){?>
                 <a href="subCategorias.php?del=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 					      <? } else {?>
-                <a href="subCategorias.php?hab=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                <a href="subCategorias.php?hab=<?php echo  $subCategoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" ><i class="far fa-check-circle"></i></button></a>
                 <? } ?>
                 </td>
 						</tr>

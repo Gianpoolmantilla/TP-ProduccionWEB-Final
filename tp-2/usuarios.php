@@ -87,7 +87,7 @@ require('header.php');
 		  
 				<a href="usuarios_ae.php"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
 				<?php if ( !isset($_GET['listDes'])){?>
-					<a href="usuarios.php?listDes"><button type="button" class="btn btn-success" title="Deshabilitados">Deshabilitados</button></a>
+					<a href="usuarios.php?listDes"><button type="button" class="btn btn-secondary" title="Deshabilitados">Deshabilitados</button></a>
 				<?} else {?>
 					<a href="usuarios.php"><button type="button" class="btn btn-success" title="Habilitados">Habilitados</button></a>
 				<?} ?>	
@@ -149,7 +149,7 @@ require('header.php');
 												
 												<a href="usuarios.php?del=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-danger" title="Borrar" onclick= "return ConfirmDelete()"><i class="far fa-trash-alt"></i></button></a>
 											<? } else {?>
-												<a href="usuarios.php?hab=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>	
+												<a href="usuarios.php?hab=<?php echo $usuario['id_usuario']?>"><button type="button" class="btn btn-success" title="habilitar" ><i class="far fa-check-circle"></i></button></a>	
 											<? } ?>
 									  </td>
 									</tr>

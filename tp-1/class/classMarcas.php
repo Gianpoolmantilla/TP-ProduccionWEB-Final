@@ -10,7 +10,7 @@ class sqlMarca{
     }
 
     function getMarcas(){
-        $sql = "SELECT * FROM marcas";
+        $sql = "SELECT * FROM marcas WHERE deshabilitado = 0 ";
         return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     function getMarcadeCat($id){   

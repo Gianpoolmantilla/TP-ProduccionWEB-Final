@@ -11,18 +11,18 @@ class sqlProducto{
     function getProductoDetalle($id){
         $sql = "SELECT C.nombre category, P.nombre,p.precio, p.imagen, p.id_producto, p.descripcion  FROM productos P
         INNER JOIN categorias C ON P.id_categoria = C.id_categoria 
-        WHERE p.id_producto=".$id;
+        WHERE  P.deshabilitado = 0 AND p.id_producto=".$id;
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     function getProductosHome(){
         $sql = "SELECT C.nombre category, P.nombre,p.precio, p.imagen, p.id_producto  FROM productos P
-        INNER JOIN categorias C ON P.id_categoria = C.id_categoria 
+        INNER JOIN categorias C ON P.id_categoria = C.id_categoria WHERE  P.deshabilitado = 0
         LIMIT 8";
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
     
      function getProductosDefault(){
-        $sql = "SELECT * FROM productos LIMIT 9";
+        $sql = "SELECT * FROM productos WHERE deshabilitado = 0 LIMIT 9";
      return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 

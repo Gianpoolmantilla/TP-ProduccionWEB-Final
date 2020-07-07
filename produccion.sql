@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2020 a las 08:45:52
+-- Tiempo de generación: 08-07-2020 a las 00:39:34
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,7 +54,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`, `deshabilitado`)
 (13, 'Tablets', 3, 0),
 (14, 'Multimedia', 2, 0),
 (15, 'Accesorios-TV', 2, 0),
-(41, 'Otra categoria', 0, 0),
+(41, 'Otra categoria', 0, 1),
 (42, 'otra subcategoria', 41, 0);
 
 -- --------------------------------------------------------
@@ -81,7 +81,8 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `mail`, `telefono`, `mensaje`, `estado`, `fechalta`, `id_producto`) VALUES
 (2, 'snoopi', 'xxx@gmail.com', '00011112222', 'me gusta', 200, '2020-06-21 15:44:49', 4),
 (4, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:18:23', 1),
-(5, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:19:10', 1);
+(5, 'adrian', 'adrian@gmail.com', '111222333444', 'Este producto esta bueno', 200, '2020-06-22 19:19:10', 1),
+(6, 'jorge', 'jorge@gmail.com', '54874', 'MUY BUENO', 100, '2020-07-07 19:23:38', 1);
 
 -- --------------------------------------------------------
 
@@ -182,20 +183,20 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marca`, `descripcion`, `deshabilitado`) VALUES
-(1, 'Samsung', '1'),
-(2, 'apple', '1'),
-(3, 'MSI', '1'),
-(4, 'Asus', '1'),
-(5, 'Zotac', '1'),
-(6, 'Asrock', '1'),
-(7, 'Gigabyte', '1'),
-(8, 'AMD', '1'),
-(9, 'lg', '1'),
-(10, 'Hisense', '1'),
-(11, 'Noganet', '1'),
-(12, 'Motorola', '1'),
-(13, 'Xiaomi', '1'),
-(14, 'Thonet Vander', '1'),
+(1, 'Samsung', '0'),
+(2, 'apple', '0'),
+(3, 'MSI', '0'),
+(4, 'Asus', '0'),
+(5, 'Zotac', '0'),
+(6, 'Asrock', '0'),
+(7, 'Gigabyte', '0'),
+(8, 'AMD', '0'),
+(9, 'lg', '0'),
+(10, 'Hisense', '0'),
+(11, 'Noganet', '0'),
+(12, 'Motorola', '0'),
+(13, 'Xiaomi', '0'),
+(14, 'Thonet Vander', '0'),
 (18, 'otra marca', '0'),
 (19, 'otra marca 2', '0');
 
@@ -295,7 +296,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`

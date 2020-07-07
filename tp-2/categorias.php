@@ -77,7 +77,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
           <h2 class="sub-header">
           <a href="categorias_ae.php?id_padre=0"><button type="button" class="btn btn-success" title="Agregar">Agregar</button></a>
           <?php if ( !isset($_GET['listDes'])){?>
-		  <a href="categorias.php?listDes=1"><button type="button" class="btn btn-success" title="Agregar">Deshabilitados</button></a>
+		  <a href="categorias.php?listDes=1"><button type="button" class="btn btn-secondary" title="Agregar">Deshabilitados</button></a>
 		  <?} else {?>
 		<a href="categorias.php"><button type="button" class="btn btn-success" title="HAbilitados">Habilitados</button></a>
 		  <?} ?>
@@ -121,7 +121,7 @@ if(  !in_array('categorias',$_SESSION['usuario']['permisos'])){
 							  <? if(isset($categoria['deshabilitado']) && $categoria['deshabilitado']==0 ){?>
                 <a href="categorias.php?delpadre=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-danger" title="Deshabilitar" ><i class="far fa-trash-alt"></i></button></a>
                 <? } else {?>
-                  <a href="categorias.php?hab=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" >Habilitar</button></a>
+                  <a href="categorias.php?hab=<?php echo  $categoria['id_categoria']?>"><button type="button" class="btn btn-success" title="habilitar" ><i class="far fa-check-circle"></i></button></a>
                 <? } ?>  
                 </td>
 						</tr>
